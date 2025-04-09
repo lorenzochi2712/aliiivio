@@ -1,0 +1,7 @@
+{
+  "name": "aliiivio",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
