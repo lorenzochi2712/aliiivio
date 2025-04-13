@@ -1,65 +1,63 @@
-import { Component, inject, runInInjectionContext,EnvironmentInjector  } from '@angular/core';
-import { FormControl, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
-import { Firestore, doc, getDoc } from '@angular/fire/firestore';
-import { AlertController, IonicModule } from '@ionic/angular';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { addIcons } from 'ionicons';
+import { IonIcon } from '@ionic/angular/standalone';
+import { personAddOutline, logInOutline, alertCircleOutline, personCircleOutline } from 'ionicons/icons';
+import { RouterLink } from '@angular/router';
+
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonButton
+} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  imports: [IonicModule, FormsModule, ReactiveFormsModule],
+  standalone: true,
+  imports: [
+    IonContent,
+    IonItem,
+    IonLabel,
+    IonInput,
+    IonButton,
+    FormsModule,
+    ReactiveFormsModule,IonIcon,RouterLink
+  ]
 })
 export class LoginPage {
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required),
+  loginForm = inject(FormBuilder).group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required]
   });
 
-  private auth = inject(Auth);
-  private firestore = inject(Firestore);
+  private authService = inject(AuthService);
   private alertCtrl = inject(AlertController);
-  private envInjector = inject(EnvironmentInjector); // 💡 Obligatorio
+  private router = inject(Router);
+  constructor(){
+    addIcons({ personAddOutline, logInOutline, alertCircleOutline, personCircleOutline });
+  }
 
   async login() {
     const { email, password } = this.loginForm.value;
-    if (!email || !password) return;
-  
-    await runInInjectionContext(this.envInjector, async () => {
-      try {
-        const cred = await signInWithEmailAndPassword(this.auth, email, password); // ✅ desde @angular/fire
-        const uid = cred.user.uid;
-  
-        const userRef = doc(this.firestore, 'users', uid);
-        const userSnap = await getDoc(userRef);
-  
-        if (userSnap.exists()) {
-          const data: any = userSnap.data();
-          const edad = this.calcularEdad(new Date(data.fechaNacimiento));
-  
-          if (edad >= 18) {
-            this.mostrarAlerta('Acceso permitido', `Tienes ${edad} años.`);
-          } else {
-            this.mostrarAlerta('Acceso denegado', `Debes tener al menos 18 años. Tienes ${edad}.`);
-          }
-        } else {
-          this.mostrarAlerta('Error', 'No se encontró información del usuario.');
-        }
-      } catch (err: any) {
-        this.mostrarAlerta('Error', err.message);
-      }
-    });
-  }
 
-  calcularEdad(fechaNacimiento: Date): number {
-    const hoy = new Date();
-    let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
-    const m = hoy.getMonth() - fechaNacimiento.getMonth();
-    if (m < 0 || (m === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
-      edad--;
+    if (!email || !password) return;
+
+    try {
+      await this.authService.login(email, password);
+      this.router.navigateByUrl('/home');
+    } catch (err: any) {
+      this.mostrarAlerta('Error de inicio de sesión', err.message);
     }
-    return edad;
   }
 
   async mostrarAlerta(header: string, message: string) {

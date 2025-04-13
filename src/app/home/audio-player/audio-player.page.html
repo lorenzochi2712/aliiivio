@@ -1,0 +1,21 @@
+<ion-content class="ion-padding audio-player-content" fullscreen>
+  <div class="player-container">
+    <!-- Imagen del audio -->
+    <img src="{{imagen}}" alt="Portada del audio" class="cover-image" />
+
+    <!-- Título del audio -->
+    <h2 class="title">{{titulo}}</h2>
+
+    <!-- Reproductor de audio -->
+    <audio
+      #audioPlayer
+      controls
+      controlsList="nodownload noplaybackrate"
+      class="custom-audio"
+      (ended)="onEnded()"
+    >
+      <source src="{{audio}}" type="audio/mp3" />
+      Tu navegador no soporta la reproducción de audio.
+    </audio>
+  </div>
+</ion-content>

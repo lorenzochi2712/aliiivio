@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Test de Bienestar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <swiper-container effect="cards" grab-cursor="true">
+    <swiper-slide *ngFor="let pregunta of preguntas; let i = index">
+      <div class="slide-card">
+        <p>{{ pregunta }}</p>
+        <div class="btns">
+          <ion-button expand="block" color="success" (click)="responder(i, 'Sí')">
+            Sí
+          </ion-button>
+          <ion-button expand="block" color="danger" (click)="responder(i, 'No')">
+            No
+          </ion-button>
+        </div>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</ion-content>

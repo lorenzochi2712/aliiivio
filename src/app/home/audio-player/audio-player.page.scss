@@ -1,0 +1,45 @@
+.audio-player-content {
+    --background: #d3c098;
+    background-color: #d3c098;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 30px;
+  }
+  
+  .player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cover-image {
+    width: 80%;
+    max-width: 300px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(92, 9, 17, 0.3);
+    border: 3px solid #5c0911;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    color: #5c0911;
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .audio-controls {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .custom-audio {
+    width: 100%;
+    max-width: 350px;
+    accent-color: #5c0911;
+  }
+  

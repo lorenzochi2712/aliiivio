@@ -1,0 +1,20 @@
+<ion-content class="ion-padding" style="--background: #d3c098; color: #5c0911;">
+  <div class="text-center">
+    <img src="https://aliiivio.com/img_entrenamientos/portadas20/1_sacalo.jpg" style="width: 200px; border-radius: 15px;" />
+    <h2>{{ audios[currentIndex]?.titulo }}</h2>
+  </div>
+
+  <div style="position: absolute; bottom: 40px; width: 100%;">
+    <ion-buttons class="ion-justify-content-center">
+      <ion-button (click)="prevAudio()">
+        <ion-icon name="play-back"></ion-icon>
+      </ion-button>
+      <ion-button (click)="togglePlay()">
+        <ion-icon [name]="isPlaying ? 'pause' : 'play'"></ion-icon>
+      </ion-button>
+      <ion-button (click)="nextAudio()">
+        <ion-icon name="play-forward"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </div>
+</ion-content>

@@ -1,0 +1,31 @@
+.mySwiper {
+  width: 100%;
+  height: 100%;
+  --swiper-theme-color: #5c0911;
+}
+
+.card-content {
+  background-color: #fff8ed;
+  border-radius: 16px;
+  padding: 24px;
+  height: 100%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.card-content h2 {
+  font-size: 1.2rem;
+  color: #5c0911;
+  margin-bottom: 20px;
+}
+
+.btns {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

@@ -1,20 +1,42 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="main_content_div">
+    <div class="user_div">
+      <div class="first_div" >
+        
+        <ion-label class="welcome">Bienvenido</ion-label>
+      </div>
+    </div>
+  <div class="content_div animated bounceInUp" *ngIf="edad !== null">
+      <ion-label>
+        Aqui esta lo que buscabas, elige una opción:
+      </ion-label>
+    <!-- mayor de 20 años -->
+      <ion-grid fixed>
+        <ion-row *ngIf="edad >= 21;"> 
+          <ion-col size="6" (click)="goToAudio(item)" *ngFor="let item of subjectsmayor">
+             <div class="col_div" routerLink={{item.route}}>
+              <ion-thumbnail>
+                <img alt="Silhouette of mountains" src="{{item.img}}" />
+              </ion-thumbnail>
+            </div> 
+            
+          </ion-col>
+        </ion-row>
+        <!-- menor igual de 20 años -->
+        <ion-row *ngIf="edad < 21;"> 
+          <ion-col size="6" (click)="goToAudio(item)" *ngFor="let item of subjectsmenor">
+             <div class="col_div" routerLink={{item.route}}>
+              <ion-thumbnail>
+                <img alt="Silhouette of mountains" src="{{item.img}}" />
+              </ion-thumbnail>
+            </div> 
+            
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  <div *ngIf="edad === null">
+    <p>Cargando información del usuario...</p>
   </div>
+</div>
+</div>
 </ion-content>
