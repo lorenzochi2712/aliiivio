@@ -1,31 +1,92 @@
-.mySwiper {
-  width: 100%;
-  height: 100%;
-  --swiper-theme-color: #5c0911;
-}
-
-.card-content {
-  background-color: #fff8ed;
-  border-radius: 16px;
-  padding: 24px;
-  height: 100%;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+ion-content {
+  --background: #f8f9fa;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.intro-container,
+.test-container,
+.resultado-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  background-color: #d3c098;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #5c0911;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-card,
+ion-card {
+  background-color: #d3c098;
+  color: #5c0911;
+  border-radius: 20px;
+  width: 100%;
+  padding: 20px;
+}
+
+.pregunta {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 20px 0;
+  color: #5c0911;
+}
+
+.respuestas ion-button {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  --background: #707e67;
+  --color: #ffffff;
+  --border-radius: 12px;
+  width: 100%;
+}
+
+.respuestas ion-button[selected="true"] {
+  --background: #5c0911;
+}
+
+.navegacion {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navegacion ion-button {
+  --background: #5c0911;
+  --color: #ffffff;
+  width: 48%;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #5c0911;
+  margin-top: 20px;
+}
+.resultado-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   text-align: center;
 }
 
-.card-content h2 {
-  font-size: 1.2rem;
-  color: #5c0911;
-  margin-bottom: 20px;
+.resultado-gif {
+  width: 250px;
+  height: auto;
+  margin: 20px 0;
 }
 
-.btns {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.resultado-texto {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
 }

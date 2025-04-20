@@ -40,6 +40,10 @@ export class HomePage {
   edad: number | null = null;
   subjectsmenor;
   subjectsmayor;
+  audioscalmatuansiedad20;
+  audiosnecesitoayuda20;
+  entrenaminetosmayor;
+  entrenaminetosmenor
   private injector = inject(EnvironmentInjector);
   private auth = inject(Auth);
   private userService = inject(UserService);
@@ -87,18 +91,6 @@ export class HomePage {
         route: '/audio-player',
         rutaaudio: 'https://aliiivio.com/audios_independientes/audios_independientes_20/TU_PUEDES.mp3'
       },
-      {
-        img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientocalmatuansiedad.jpg',
-        name: 'Calma tu ansiedad',
-        route: '/entrenamientos/',
-        bandera: ''
-      },
-      {
-        img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientonecesitoayuda.jpg',
-        name: 'Entrenamiento necesito ayuda',
-        route: '/entrenamientos/',
-        bandera: ''
-      }
     ];
     this.subjectsmayor= [
       {
@@ -130,20 +122,75 @@ export class HomePage {
         titulo: 'Estres Adaptativo',
         route: '/audio-player',
         rutaauido: 'https://aliiivio.com/audios_independientes/audios_independientes_21/ESTRES_ADAPTATIVO.mp3'
-      },
+      }
+    ];
+    this.entrenaminetosmayor =[
       {
         img: 'https://aliiivio.com/img_entrenamientos/portadas21/entrenamientocalmatuansiedad.jpg',
         name: 'Calma tu ansiedad',
-        route: '/entrenamientos/'
+        route: '/entrenamientos/audioplayer'
       },
       {
         img: 'https://aliiivio.com/img_entrenamientos/portadas21/entrenamientonecesitoayuda.jpg',
         name: 'Entrenamiento necesito ayuda',
         route: '/entrenamientos/'
       }
-
+    ]
+    this.entrenaminetosmenor=[
+      {
+        img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientocalmatuansiedad.jpg',
+        name: 'Calma tu ansiedad',
+        route: '/audio-playerent',
+        bandera: ''
+      },
+      {
+        img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientonecesitoayuda.jpg',
+        name: 'Entrenamiento necesito ayuda',
+        route: '/audio-playerent',
+        bandera: ''
+      }
+    ]
+    //=============== Audios de necesito ayuda menor de 20 años ===============================
+    this.audiosnecesitoayuda20 = [
+      {
+        titulo: 'Tu lugar seguro',
+        img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientonecesitoayuda.jpg',
+        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/necesitoayuda/1_TULUGARSEGURO.mp3'
+      },
+      {
+        titulo: 'Acomodando tus emociones',
+        img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientonecesitoayuda.jpg',
+        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/necesitoayuda/2_ACOMODANDOTUSEMOCIONES.mp3'
+      },
+      {
+        titulo: 'La voz de tu cuerpo',
+        img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientonecesitoayuda.jpg',
+        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/necesitoayuda/3_LAVOZDETUCUERPO.mp3'
+      },
+      {
+        titulo: 'Encuentra una salida',
+        img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientonecesitoayuda.jpg',
+        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/necesitoayuda/5_ENCUENTRAUNASALIDA.mp3'
+      },
+      {
+        titulo: 'Caritas',
+        img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientonecesitoayuda.jpg',
+        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/necesitoayuda/7_CARITAS.mp3'
+      },
+      {
+        titulo: 'Curando a tu peluche',
+        img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientonecesitoayuda.jpg',
+        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/necesitoayuda/9_CURANDOATUPELUCHE.mp3'
+      }
     ];
-    
+     
+    this.audioscalmatuansiedad20 = [
+      {
+        titulo : '',
+        img : '',
+        rutaaudio : ''
+      }
+    ]
   }
   goToSubject()
   {
@@ -154,6 +201,24 @@ export class HomePage {
         img: subject.img,
         titulo: subject.titulo,
         audio: subject.rutaaudio
+      }
+    });
+  }
+  goToAudioentrenamiento(item: any) {
+    let playlist:any[] = [];
+  
+    if (item.name === 'Calma tu ansiedad') {
+      playlist = this.audioscalmatuansiedad20;
+    } else if (item.name === 'Entrenamiento necesito ayuda') {
+      playlist = this.audiosnecesitoayuda20;
+    }
+  
+    const currentAudio = playlist[0]; // El primero de la lista
+  
+    this.router.navigate(['/audio-playerent'], {
+      state: {
+        currentAudio,
+        playlist,
       }
     });
   }

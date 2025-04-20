@@ -19,7 +19,13 @@
                 <img alt="Silhouette of mountains" src="{{item.img}}" />
               </ion-thumbnail>
             </div> 
-            
+          </ion-col>
+            <ion-col size="6" (click)="goToAudioentrenamiento(item)" *ngFor="let item of subjectsmayor">
+              <div class="col_div" routerLink={{item.route}}>
+               <ion-thumbnail>
+                 <img alt="Silhouette of mountains" src="{{item.img}}" />
+               </ion-thumbnail>
+             </div> 
           </ion-col>
         </ion-row>
         <!-- menor igual de 20 años -->
@@ -29,9 +35,15 @@
               <ion-thumbnail>
                 <img alt="Silhouette of mountains" src="{{item.img}}" />
               </ion-thumbnail>
-            </div> 
-            
+            </div>  
           </ion-col>
+          <ion-col size="6" (click)="goToAudioentrenamiento(item)" *ngFor="let item of entrenaminetosmenor">
+            <div class="col_div">
+             <ion-thumbnail>
+               <img alt="Silhouette of mountains" src="{{item.img}}" />
+             </ion-thumbnail>
+           </div> 
+        </ion-col>
         </ion-row>
       </ion-grid>
   <div *ngIf="edad === null">

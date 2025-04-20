@@ -20,7 +20,18 @@ import { Capacitor } from '@capacitor/core';
 import { environment } from './environments/environment';
 import { getApp } from '@angular/fire/app';
 import {register} from 'swiper/element/bundle'
+
+import { addIcons } from 'ionicons';
+import { personOutline, mailOutline, lockClosedOutline, homeOutline, calendarOutline } from 'ionicons/icons';
+
 register();
+addIcons({
+  'person-outline': personOutline,
+  'mail-outline': mailOutline,
+  'lock-closed-outline': lockClosedOutline,
+  'home-outline': homeOutline,
+  'calendar-outline': calendarOutline
+});
 if (environment.production) {
   enableProdMode();
 }
@@ -32,9 +43,9 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes, withPreloading(PreloadAllModules)),
     provideHttpClient(),
     provideAnimationsAsync(),
-
+    provideRouter(routes),
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-
+    //provideAuth(() => getAuth()),
     provideAuth(() => {
       const auth = initializeAuth(getApp(), {
         persistence: indexedDBLocalPersistence

@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } 
 import { IonicModule, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/services/register.service';
+import { addIcons } from 'ionicons';
+import { IonIcon } from '@ionic/angular/standalone';
+import { personAddOutline, logInOutline, alertCircleOutline, personCircleOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +17,7 @@ import { RegisterService } from 'src/app/services/register.service';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicModule
+    IonicModule,
   ]
 })
 export class RegisterPage {
@@ -26,6 +29,7 @@ export class RegisterPage {
     private alertCtrl: AlertController,
     private router: Router
   ) {
+    addIcons({ personAddOutline, logInOutline, alertCircleOutline, personCircleOutline });
     this.registerForm = this.fb.group({
       nombre: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
