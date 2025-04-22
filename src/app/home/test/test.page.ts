@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import {HomePage} from '../home.page'
 
 @Component({
   selector: 'app-test',
@@ -55,15 +56,26 @@ export class TestPage {
   respuestasUno: number[] = Array(this.preguntasUno.length).fill(null);
   respuestasDos: number[] = Array(this.preguntasDos.length).fill(null);
 
-  constructor(private router: Router) {}
+  playlist: any[] =[];
+
+  constructor(private router: Router) {
+  }
+  ngOnInit(){
+    const nav = this.router.getCurrentNavigation();
+    const state = nav?.extras?.state as { playlist: any[] };
+
+    if (!state?.playlist || state.playlist.length === 0) {
+      console.warn('No playlist found in state.');
+      return;
+    }
+
+    this.playlist = state.playlist;
+  }
 
   iniciarTest() {
     this.testIniciado = true;
   }
 
-  omitirTest() {
-    this.router.navigate(['/entrenamiento']);
-  }
 
   obtenerPreguntaActual(): string {
     if (this.seccionActual === 1) {
@@ -128,6 +140,8 @@ export class TestPage {
   }
 
   irAEntrenamiento() {
-    this.router.navigate(['/entrenamiento']);
+    this.router.navigate(['/audio-playerent'], {
+      state: { playlist: this.playlist }
+    });
   }
 }

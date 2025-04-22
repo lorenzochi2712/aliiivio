@@ -1,44 +1,66 @@
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { NgIf } from '@angular/common';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonSpinner,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonButton
+} from '@ionic/angular/standalone';
 @Component({
   selector: 'app-audio-player',
-  standalone: true,
   templateUrl: './audio-player.page.html',
   styleUrls: ['./audio-player.page.scss'],
-  imports: [IonicModule, CommonModule]
+  standalone: true,
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonSpinner,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
+    IonButton,NgIf
+  ]
 })
-export class AudioPlayerPage implements OnInit{
-  titulo: string = '';
-  imagen: string = '';
-  audio: string = '';
+export class AudioPlayerPage implements OnInit {
+  currentAudio: any = null;
+  loading: boolean = true;
+  audioElement = new Audio();
+
   constructor(private route: ActivatedRoute) {}
+
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.titulo = params['titulo'];
-      this.imagen = params['img'];
-      this.audio = params['audio'];
+      if (params['img'] && params['titulo'] && params['audio']) {
+        this.currentAudio = {
+          img: params['img'],
+          titulo: params['titulo'],
+          audio: params['audio']
+        };
+
+        this.audioElement.src = this.currentAudio.audio;
+        this.audioElement.load();
+        this.loading = false;
+      } else {
+        this.loading = false;
+      }
     });
   }
-  @ViewChild('audioPlayer', { static: true }) audioPlayerRef!: ElementRef<HTMLAudioElement>;
 
-  isPlaying = false;
-
-  toggleAudio() {
-    const audio = this.audioPlayerRef.nativeElement;
-
-    if (audio.paused) {
-      audio.play();
-      this.isPlaying = true;
+  playPauseAudio() {
+    if (this.audioElement.paused) {
+      this.audioElement.play();
     } else {
-      audio.pause();
-      this.isPlaying = false;
+      this.audioElement.pause();
     }
-  }
-
-  onEnded() {
-    this.isPlaying = false;
   }
 }

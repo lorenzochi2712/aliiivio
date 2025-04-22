@@ -3,14 +3,12 @@
   <div *ngIf="!testIniciado" class="intro-container">
     <ion-card class="intro-card">
       <ion-card-header>
-        <ion-card-title>Test de Bienestar</ion-card-title>
+        <ion-card-title>Test entrenamiento</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <p>
-          El siguiente Test te dará una opinión sobre tu bienestar actual, si lo respondes también al final sabrás cuánto mejoraste.
-          También puedes iniciar tu entrenamiento sin el test.
+          Si eres menor de 21 años te recomendamos responder este test con la ayuda de un adulto.
         </p>
-        <ion-button expand="block" color="medium" (click)="omitirTest()">Omitir</ion-button>
         <ion-button expand="block" color="primary" (click)="iniciarTest()">Continuar</ion-button>
       </ion-card-content>
     </ion-card>

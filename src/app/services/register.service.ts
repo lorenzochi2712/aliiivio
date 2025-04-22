@@ -17,7 +17,7 @@ export class RegisterService {
       const uid = cred.user.uid;
 
       // ⚠️ Aquí usamos directamente firestore.firestore, el acceso interno al SDK
-      const userRef = doc(firestore, `usuarios/${uid}`);
+      const userRef = doc(firestore, `users/${uid}`);
       await setDoc(userRef, data);
 
       return uid;

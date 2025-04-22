@@ -1,21 +1,33 @@
-<ion-content class="ion-padding audio-player-content" fullscreen>
-  <div class="player-container">
-    <!-- Imagen del audio -->
-    <img src="{{imagen}}" alt="Portada del audio" class="cover-image" />
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Reproductor</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-    <!-- Título del audio -->
-    <h2 class="title">{{titulo}}</h2>
+<ion-content class="ion-padding" [fullscreen]="true">
+  <div *ngIf="loading" class="loading">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>⏳ Cargando datos del audio...</p>
+  </div>
 
-    <!-- Reproductor de audio -->
-    <audio
-      #audioPlayer
-      controls
-      controlsList="nodownload noplaybackrate"
-      class="custom-audio"
-      (ended)="onEnded()"
-    >
-      <source src="{{audio}}" type="audio/mp3" />
-      Tu navegador no soporta la reproducción de audio.
-    </audio>
+  <div *ngIf="!loading && currentAudio" class="audio-container">
+    <ion-card class="audio-card">
+      <img [src]="currentAudio.img" alt="Portada del audio" />
+
+      <ion-card-header>
+        <ion-card-title class="titulo">{{ currentAudio.titulo }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>Reproduciendo: {{ currentAudio.titulo }}</p>
+        <ion-button expand="block" color="primary" (click)="playPauseAudio()">
+          {{ audioElement.paused ? 'Reproducir' : 'Pausar' }}
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="!loading && !currentAudio">
+    <p>No se encontró audio para reproducir.</p>
   </div>
 </ion-content>
