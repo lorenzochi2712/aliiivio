@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { addIcons } from 'ionicons';
 import { IonIcon } from '@ionic/angular/standalone';
-import { personAddOutline, logInOutline, alertCircleOutline, personCircleOutline } from 'ionicons/icons';
+import { personAddOutline, logInOutline, alertCircleOutline, personCircleOutline,eyeOutline , eyeOffOutline} from 'ionicons/icons';
 import { RouterLink } from '@angular/router';
 
 import {
@@ -44,7 +44,7 @@ export class LoginPage {
   private alertCtrl = inject(AlertController);
   private router = inject(Router);
   constructor(){
-    addIcons({ personAddOutline, logInOutline, alertCircleOutline, personCircleOutline });
+    addIcons({ personAddOutline, logInOutline, alertCircleOutline, personCircleOutline,eyeOutline,eyeOffOutline });
   }
 
   async login() {
@@ -54,6 +54,7 @@ export class LoginPage {
 
     try {
       await this.authService.login(email, password);
+      this.loginForm.reset();// limpiamos el formulario
       this.router.navigateByUrl('/home');
     } catch (err: any) {
       this.mostrarAlerta('Error de inicio de sesión', err.message);
@@ -67,5 +68,10 @@ export class LoginPage {
       buttons: ['OK'],
     });
     await alert.present();
+  }
+  showPassword = false; // 🔐 Estado inicial: contraseña oculta
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 }

@@ -20,6 +20,7 @@ export class TestPage {
   mostrarResultado = false;
   puntajeTotal = 0;
   gifResultado = '';
+  txtResultado = '';
 // Aquí deberías colocar las rutas correctas de los 3 gifs cargados
   gifVerde = 'assets/gifs/resultado-verde.gif'; // Puntaje bajo
   gifAmarillo = 'assets/gifs/resultado-amarillo.gif'; // Puntaje medio
@@ -90,9 +91,20 @@ export class TestPage {
   }
 
   responderMultiple(valor: number) {
-    this.respuestasDos[this.preguntaIndex - this.preguntasUno.length] = valor;
+    const index = this.preguntaIndex - this.preguntasUno.length;
+    this.respuestasDos[index] = valor;
   }
-
+  esPreguntaInvertida(): boolean {
+    const index = this.preguntaIndex - this.preguntasUno.length;
+    return [1, 3, 5, 7, 9, 11, 13].includes(index);
+  }
+  respuestaSeleccionada(): boolean {
+    if (this.seccionActual === 1) {
+      return this.respuestasUno[this.preguntaIndex] !== null;
+    } else {
+      return this.respuestasDos[this.preguntaIndex - this.preguntasUno.length] !== null;
+    }
+  }
   siguiente() {
     if (this.seccionActual === 1 && this.preguntaIndex < this.preguntasUno.length - 1) {
       this.preguntaIndex++;
@@ -131,11 +143,19 @@ export class TestPage {
     this.mostrarResultado = true;
 
     if (puntaje < 15) {
+      this.txtResultado= 'Parece que en este momento te sientes bastante tranquilo(a). Es normal tener preocupaciones de vez en cuando, pero en general, estás manejando bien tus emociones. ¡Sigue cuidándote!'
       this.gifResultado = this.gifVerde;
     } else if (puntaje < 25) {
+      this.txtResultado='Has mostrado algunas señales de preocupación o nerviosismo. No es algo grave, pero puede ser útil que tomes descansos, hables con alguien de confianza o hagas actividades que te relajen.'
       this.gifResultado = this.gifAmarillo;
     } else {
+      this.txtResultado='Parece que últimamente has estado sintiéndote con mucho estrés, ansiedad o tristeza. No estás solo(a). Hablar con un adulto, amigo o especialista puede ayudarte a sentirte mejor poco a poco'
       this.gifResultado = this.gifRojo;
+    }
+    if(this.mostrarResultado){
+      setTimeout(()=> {
+        this.irAEntrenamiento();
+      },7700)
     }
   }
 
@@ -144,4 +164,5 @@ export class TestPage {
       state: { playlist: this.playlist }
     });
   }
+  
 }

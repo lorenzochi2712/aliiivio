@@ -20,6 +20,9 @@ ion-button {
   ion-content {
     --background: #d3c098;
     color: #5c0911;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .loading {
@@ -87,4 +90,11 @@ ion-button::part(native) {
   outline: none !important;
   box-shadow: none !important;
   -webkit-tap-highlight-color: transparent;
+}
+.audio-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 1rem;
 }

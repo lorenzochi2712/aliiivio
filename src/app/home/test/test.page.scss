@@ -1,45 +1,54 @@
 ion-content {
-  --background: #f8f9fa;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  --background: linear-gradient(to bottom right, #d3c098, #f0e5cd);
+  position: relative;
   min-height: 100vh;
+  padding: 20px;
 }
 
+/* Centrado completo y consistente */
 .intro-container,
 .test-container,
 .resultado-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   max-width: 500px;
   padding: 20px;
-  background-color: #d3c098;
+  background-color: rgba(211, 192, 152, 0.95);
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   color: #5c0911;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 
+/* Tarjeta de introducción */
 .intro-card,
 ion-card {
   background-color: #d3c098;
   color: #5c0911;
-  border-radius: 20px;
+  border-radius: 25px;
   width: 100%;
-  padding: 20px;
+  padding: 28px;
 }
 
-.pregunta {
-  font-size: 1.3rem;
+/* Títulos grandes */
+h2 {
+  font-size: 2.4 rem;
   font-weight: bold;
+  color: #5c0911;
+  margin-top: 28px;
+}
+
+/* Pregunta centrada y grande */
+.pregunta {
+  font-size: 1.4rem;
   margin: 20px 0;
   color: #5c0911;
 }
 
+/* Botones de respuestas */
 .respuestas ion-button {
   margin: 10px 0;
   font-size: 1.1rem;
@@ -53,6 +62,7 @@ ion-card {
   --background: #5c0911;
 }
 
+/* Navegación */
 .navegacion {
   margin-top: 20px;
   display: flex;
@@ -66,20 +76,7 @@ ion-card {
   width: 48%;
 }
 
-h2 {
-  font-size: 1.5rem;
-  color: #5c0911;
-  margin-top: 20px;
-}
-.resultado-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-align: center;
-}
-
+/* Resultado */
 .resultado-gif {
   width: 250px;
   height: auto;
@@ -89,4 +86,7 @@ h2 {
 .resultado-texto {
   font-size: 1.2rem;
   margin-bottom: 20px;
+}
+ion-button {
+  --ripple-color: #d3c098 !important;
 }
