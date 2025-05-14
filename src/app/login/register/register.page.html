@@ -1,4 +1,4 @@
-<ion-content class="ion-padding">
+<ion-content>
   <div class="register-section">
     <div class="heading">
       <h1>Registro</h1>
@@ -46,9 +46,21 @@
         </ion-item>
       </div>
 
+      <!-- Términos y condiciones -->
+      <ion-item lines="none" class="terms-item">
+        <ion-checkbox slot="start" formControlName="terminos"></ion-checkbox>
+        <ion-label>
+          Acepto los
+          <a href="https://www.aliiivio.com/terminosycondiciones" target="_blank">términos y condiciones</a>.
+        </ion-label>
+      </ion-item>
+
       <div class="action-buttons">
         <ion-button type="submit" [disabled]="registerForm.invalid">
           Registrarse
+        </ion-button>
+        <ion-button [routerLink]="['/login']">
+          Regresar al inicio
         </ion-button>
       </div>
     </form>

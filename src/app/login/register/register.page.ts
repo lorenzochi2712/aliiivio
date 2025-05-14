@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { IonicModule, AlertController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/services/register.service';
 import { addIcons } from 'ionicons';
 import { IonIcon } from '@ionic/angular/standalone';
 import { personAddOutline, logInOutline, alertCircleOutline, personCircleOutline } from 'ionicons/icons';
-
+import { RouterLink } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import {IonCheckbox, IonContent,IonItem,IonLabel,IonButton,IonInput} from'@ionic/angular/standalone'
+import { TerminosComponent } from './terminos/terminos.component';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -17,8 +20,17 @@ import { personAddOutline, logInOutline, alertCircleOutline, personCircleOutline
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicModule,
+    RouterLink,
+    RouterModule,
+    IonCheckbox,
+    IonInput,
+    IonIcon,
+    IonContent,
+    IonItem,
+    IonLabel,
+    IonButton
   ]
+  
 })
 export class RegisterPage {
   registerForm: FormGroup;
@@ -35,7 +47,8 @@ export class RegisterPage {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       fechaNacimiento: ['', Validators.required],
-      domicilio: ['', Validators.required]
+      domicilio: ['', Validators.required],
+      terminos: [false, Validators.requiredTrue]  // ✅ Nuevo campo con validación
     });
   }
 
@@ -85,4 +98,6 @@ export class RegisterPage {
       console.error('❌ Error al mostrar alerta:', error);
     }
   }
+  
+
 }

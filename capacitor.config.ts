@@ -1,5 +1,5 @@
-import type { CapacitorConfig } from '@capacitor/cli';
-
+import { CapacitorConfig } from '@capacitor/cli';
+import { Keyboard } from '@capacitor/keyboard';
 const config: CapacitorConfig = {
   appId: 'com.aliiivio.aliiivio',
   appName: 'aliiivio',
@@ -21,6 +21,11 @@ const config: CapacitorConfig = {
       layoutName: "launch_screen",
       useDialog: false,
     },
+    Keyboard: {
+      Keyboardresize: 'ionic', // IMPORTANTE para scroll automático
+      Keyboardstyle: 'light',
+      resizeOnFullScreen: true
+    }
   },
 };
 
