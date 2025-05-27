@@ -22,36 +22,57 @@
         </ion-item>
       </div>
 
+      <!-- Contraseña -->
       <div class="form-input">
-        <ion-icon name="lock-closed-outline"></ion-icon>
-        <ion-item>
-          <ion-label position="floating">Contraseña</ion-label>
-          <ion-input formControlName="password" type="password"></ion-input>
-        </ion-item>
-      </div>
+  <ion-icon name="lock-closed-outline"></ion-icon>
+  <ion-item class="password-item">
+    <ion-label position="floating">Contraseña</ion-label>
+    <ion-input
+      [type]="showPassword ? 'text' : 'password'"
+      formControlName="password">
+    </ion-input>
+    <ion-buttons slot="end" (click)="togglePasswordVisibility()" class="eye-icon">
+      <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+    </ion-buttons>
+  </ion-item>
+</div>
 
-      <div class="form-input">
-        <ion-icon name="calendar-outline"></ion-icon>
-        <ion-item>
-          <ion-label position="floating">Fecha de nacimiento</ion-label>
-          <ion-input formControlName="fechaNacimiento" type="date"></ion-input>
-        </ion-item>
-      </div>
 
-      <div class="form-input">
-        <ion-icon name="home-outline"></ion-icon>
-        <ion-item>
-          <ion-label position="floating">Domicilio</ion-label>
-          <ion-input formControlName="domicilio"></ion-input>
-        </ion-item>
-      </div>
 
+      <!-- Confirmar contraseña -->
+     <div class="form-input">
+  <ion-icon name="lock-closed-outline"></ion-icon>
+  <ion-item class="password-item">
+    <ion-label position="floating">Confirmar contraseña</ion-label>
+    <ion-input
+      [type]="showConfirmPassword ? 'text' : 'password'"
+      formControlName="confirmPassword">
+    </ion-input>
+    <ion-buttons slot="end" (click)="toggleConfirmPasswordVisibility()" class="eye-icon">
+      <ion-icon [name]="showConfirmPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+    </ion-buttons>
+  </ion-item>
+</div>
+
+
+      <!-- Error: contraseñas no coinciden -->
+      <ion-text color="danger" *ngIf="registerForm.hasError('passwordsMismatch') && registerForm.touched">
+        <p class="ion-padding-start">Las contraseñas no coinciden.</p>
+      </ion-text>
+
+      <!-- Error: contraseña insegura -->
+      <ion-text color="danger"
+        *ngIf="registerForm.get('password')?.hasError('pattern') && registerForm.get('password')?.touched">
+        <p class="ion-padding-start">
+          La contraseña debe tener al menos 8 caracteres, incluir mayúsculas, minúsculas, un número y un símbolo.
+        </p>
+      </ion-text>
       <!-- Términos y condiciones -->
       <ion-item lines="none" class="terms-item">
         <ion-checkbox slot="start" formControlName="terminos"></ion-checkbox>
         <ion-label>
           Acepto los
-          <a href="https://www.aliiivio.com/terminosycondiciones" target="_blank">términos y condiciones</a>.
+          <a href="https://www.aliiivio.com/terminosycondiciones.html" target="_blank">términos y condiciones</a>.
         </ion-label>
       </ion-item>
 

@@ -55,7 +55,7 @@ export class LoginPage {
     try {
       await this.authService.login(email, password);
       this.loginForm.reset();// limpiamos el formulario
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/selector');
     } catch (err: any) {
       this.mostrarAlerta('Error de inicio de sesión', err.message);
     }

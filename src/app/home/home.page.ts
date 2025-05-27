@@ -52,17 +52,27 @@ export class HomePage {
   private userService = inject(UserService);
 
   constructor(private alertController: AlertController,private router: Router) {
-    this.injector.runInContext(() => {
+        const navigation = this.router.getCurrentNavigation();
+    const state = navigation?.extras?.state as { edad?: number };
+
+    if (state.edad !== undefined) {
+      this.edad = state.edad;
+    } else {
+      // Si no se recibe edad, puedes redirigir a selector o mostrar error
+      this.router.navigate(['/selector']);
+    }
+    /*this.injector.runInContext(() => {
       onAuthStateChanged(this.auth, async (user) => {
         if (user) {
           const userData: any = await this.userService.getUserData(user.uid);
           if (userData?.fechaNacimiento) {
             const nacimiento = new Date(userData.fechaNacimiento);
-            this.edad = this.calcularEdad(nacimiento);
+            
           }
         }
       });
-    });
+    });*/
+
     this.subjectsmenor = [
       {
         img: 'https://aliiivio.com/img_entrenamientos/portadas20/1_sacalo.jpg',
@@ -336,6 +346,7 @@ export class HomePage {
       },
     ]
   }
+
   goToSubject()
   {
   }

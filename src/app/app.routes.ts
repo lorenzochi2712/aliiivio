@@ -37,6 +37,10 @@ export const routes: Routes = [
   {
     path: 'audio-playerent',
     loadComponent: () => import('./home/entrenamineto/audio-player/audio-player.page').then( m => m.AudioPlayerPage)
+  },
+  {
+    path: 'selector',
+    loadComponent: () => import('./selector/selector.page').then( m => m.SelectorPage)
   }
   
 ];

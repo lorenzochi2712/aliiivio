@@ -143,13 +143,13 @@ export class TestPage {
     this.mostrarResultado = true;
 
     if (puntaje < 15) {
-      this.txtResultado= 'Parece que en este momento te sientes bastante tranquilo(a). Es normal tener preocupaciones de vez en cuando, pero en general, estás manejando bien tus emociones. ¡Sigue cuidándote!'
+      this.txtResultado= 'Aunque parece que no hay problemas con ansiedad ni con depresión, y se goza de buena salud en general, se recomiendan opciones de reforzamiento, para mantener y reforzar el equilibrio saludable tanto emocional como fisico'
       this.gifResultado = this.gifVerde;
     } else if (puntaje < 25) {
-      this.txtResultado='Has mostrado algunas señales de preocupación o nerviosismo. No es algo grave, pero puede ser útil que tomes descansos, hables con alguien de confianza o hagas actividades que te relajen.'
+      this.txtResultado='Hay probable presencia de ansiedad y/o depresión, así como probables aspectos de salud que sería bueno atiendas. Acude o continúa con tratamiento médico y/o psicológico, pues parece que tu estado de salud se encuentra en alerta.'
       this.gifResultado = this.gifAmarillo;
     } else {
-      this.txtResultado='Parece que últimamente has estado sintiéndote con mucho estrés, ansiedad o tristeza. No estás solo(a). Hablar con un adulto, amigo o especialista puede ayudarte a sentirte mejor poco a poco'
+      this.txtResultado='Hay presencia de ansiedad y/o depresión, así como otros aspectos delicados de salud. Urge acudas o continues tu tratamiento médico y/o psicológico, pues tu estado de salud se encuentra en riesgo y puede empeorar.'
       this.gifResultado = this.gifRojo;
     }
     if(this.mostrarResultado){

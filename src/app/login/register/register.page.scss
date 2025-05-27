@@ -130,3 +130,18 @@ ion-content {
     cursor: pointer;
   }
 }
+.password-item {
+  --highlight-color-focused: #5c0911;
+}
+
+.eye-icon {
+  background: transparent;
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.eye-icon ion-icon {
+  font-size: 1.3rem;
+  color: #5c0911;
+}
