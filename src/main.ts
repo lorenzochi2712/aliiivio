@@ -19,7 +19,7 @@ import { initializeAuth, indexedDBLocalPersistence, provideAuth, getAuth } from 
 import { Capacitor } from '@capacitor/core';
 import { environment } from './environments/environment';
 import { getApp } from '@angular/fire/app';
-import {register} from 'swiper/element/bundle'
+import { register } from 'swiper/element/bundle'
 
 import { addIcons } from 'ionicons';
 import { personOutline, mailOutline, lockClosedOutline, homeOutline, calendarOutline } from 'ionicons/icons';
@@ -52,7 +52,7 @@ bootstrapApplication(AppComponent, {
       });
       return auth;
     }),
-    
+
 
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),

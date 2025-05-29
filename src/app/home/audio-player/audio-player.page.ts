@@ -35,10 +35,19 @@ export class AudioPlayerPage implements OnInit {
   currentAudio: any = null;
   loading: boolean = true;
   audioElement = new Audio();
+  isPlaying = false; // 👈 Estado del audio
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
+    // Escuchar eventos del audio
+    this.audioElement.addEventListener('play', () => {
+      this.isPlaying = true;
+    });
+    this.audioElement.addEventListener('pause', () => {
+      this.isPlaying = false;
+    });
+
     this.route.queryParams.subscribe(params => {
       if (params['img'] && params['titulo'] && params['audio']) {
         this.currentAudio = {
@@ -47,12 +56,16 @@ export class AudioPlayerPage implements OnInit {
           audio: params['audio']
         };
 
-        this.audioElement.src = this.currentAudio.audio;
-        this.audioElement.load();
-        this.loading = false;
-      } else {
-        this.loading = false;
+        if (this.audioElement.src !== this.currentAudio.audio) {
+          this.audioElement.src = this.currentAudio.audio;
+          this.audioElement.load();
+        }
+
+        // Verifica si ya se está reproduciendo
+        this.isPlaying = !this.audioElement.paused;
       }
+
+      this.loading = false;
     });
   }
 
@@ -60,6 +73,12 @@ export class AudioPlayerPage implements OnInit {
     if (this.audioElement.paused) {
       this.audioElement.play();
     } else {
+      this.audioElement.pause();
+    }
+  }
+    // 🔴 Este método se llama automáticamente al salir de la página
+  ionViewWillLeave() {
+    if (!this.audioElement.paused) {
       this.audioElement.pause();
     }
   }

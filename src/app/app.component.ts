@@ -16,13 +16,16 @@ register();
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppComponent {
- constructor(private platform: Platform) {
+  constructor(private platform: Platform) {
     this.initializeApp();
-}
-initializeApp() {
-    this.platform.ready().then(() => {
-      SplashScreen.hide();  // Oculta splash
-    });
+  }
+
+  async initializeApp() {
+    await this.platform.ready();
+    try {
+      await SplashScreen.hide();
+    } catch (e) {
+      console.warn('Error hiding splash screen:', e);
+    }
   }
 }
-
