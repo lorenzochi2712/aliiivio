@@ -209,7 +209,6 @@ export class EditarPerfilPage implements OnInit, OnDestroy {
     }
   }
 
-  // Función de eliminación de cuenta mejorada para dispositivos móviles
   async eliminarCuenta(currentPassword: string) {
     console.log('=== INICIO ELIMINACIÓN CUENTA ===');
     
@@ -378,13 +377,11 @@ export class EditarPerfilPage implements OnInit, OnDestroy {
       cssClass: 'custom-alert',
       header: '⚠️ ELIMINACIÓN PERMANENTE',
       message: `
-        <p><strong>¿Estás completamente seguro?</strong></p>
-        <p>Esta acción:</p>
-        <ul>
-          <li>• Eliminará tu cuenta <strong>${currentUser.email}</strong></li>
-          <li>• Borrará todos tus datos permanentemente</li>
-          <li>• No se puede deshacer</li>
-        </ul>
+        ¿Estás completamente seguro?
+        Esta acción:
+        • Eliminará tu cuenta ${currentUser.email}
+        • Borrará todos tus datos permanentemente
+        • No se puede deshacer
       `,
       buttons: [
         {
