@@ -43,7 +43,6 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes, withPreloading(PreloadAllModules)),
     provideHttpClient(),
     provideAnimationsAsync(),
-    provideRouter(routes),
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     //provideAuth(() => getAuth()),
     provideAuth(() => {

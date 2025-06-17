@@ -141,3 +141,34 @@ ion-button {
         --height: 680px;
     }
 }
+.custom-alert {
+  --background: #d3c098;           // color de fondo del alert
+  --color: #5c0911;                // color del texto
+  --max-width: 90%;                // ancho del alert
+
+  .alert-wrapper {
+    border-radius: 18px;
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  .alert-title {
+    font-size: 23px;
+    font-weight: bold;
+    color: #5c0911;
+  }
+
+  .alert-message {
+    font-size: 18px;
+    color: #5c0911;
+  }
+
+  .alert-button {
+    font-weight: bold;
+    color: #5c0911;
+
+    &.alert-button-role-cancel {
+      color: #5c0911;
+    }
+  }
+}

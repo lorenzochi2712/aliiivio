@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Regresar" icon="chevron-back-outline" defaultHref="/contfree" class="custom-back-button">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [fullscreen]="true">
+  <div *ngIf="loading" class="loading">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>⏳ Cargando datos del audio...</p>
+  </div>
+
+  <div *ngIf="!loading && currentAudio" class="audio-container">
+    <ion-card class="audio-card">
+      <img [src]="currentAudio.img" alt="Portada del audio" />
+
+      <ion-card-header>
+        <ion-card-title class="titulo">{{ currentAudio.titulo }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>Reproduciendo: {{ currentAudio.titulo }}</p>
+        <ion-button expand="block" (click)="playPauseAudio()">
+          {{ audioElement.paused ? 'Reproducir' : 'Pausar' }}
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="!loading && !currentAudio">
+    <p>No se encontró audio para reproducir.</p>
+  </div>
+</ion-content>

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { addIcons } from 'ionicons';
 import { IonIcon } from '@ionic/angular/standalone';
-import { personAddOutline, logInOutline, alertCircleOutline, personCircleOutline, eyeOutline, eyeOffOutline } from 'ionicons/icons';
+import { personAddOutline, logInOutline, alertCircleOutline, personCircleOutline, eyeOutline, eyeOffOutline,chevronBackOutline } from 'ionicons/icons';
 import { RouterLink } from '@angular/router';
 
 import {
@@ -16,7 +16,9 @@ import {
   IonItem,
   IonLabel,
   IonInput,
-  IonButton
+  IonButton,
+  IonButtons,
+  IonBackButton
 } from '@ionic/angular/standalone';
 import { Dialog } from '@capacitor/dialog';
 
@@ -29,6 +31,10 @@ import { Dialog } from '@capacitor/dialog';
     IonContent,
     IonItem,
     IonLabel,
+    IonHeader,
+    IonToolbar,
+    IonButtons,
+    IonBackButton,
     IonInput,
     IonButton,
     FormsModule,
@@ -45,9 +51,10 @@ export class LoginPage {
   private alertCtrl = inject(AlertController);
   private router = inject(Router);
   constructor() {
-    addIcons({ personAddOutline, logInOutline, alertCircleOutline, personCircleOutline, eyeOutline, eyeOffOutline });
+    addIcons({ personAddOutline, logInOutline, alertCircleOutline, personCircleOutline, eyeOutline, eyeOffOutline,chevronBackOutline });
   }
 
+   // 🔐 Lógica de inicio de sesión
   async login() {
     const { email, password } = this.loginForm.value;
 
@@ -55,11 +62,12 @@ export class LoginPage {
 
     try {
       await this.authService.login(email, password);
-      this.loginForm.reset();// limpiamos el formulario
-      this.router.navigateByUrl('/selector');
+      this.loginForm.reset(); // Limpiamos el formulario
+      localStorage.setItem('usuarioActivo', 'true'); // Guardamos bandera (opcional)
+      this.router.navigateByUrl('/selector'); // Redirigimos
     } catch (err: any) {
       let mensaje = 'Ocurrió un error inesperado. Intenta de nuevo.';
-      // Verifica si es un error de Firebase
+      // 🎯 Manejamos errores de Firebase Auth
       switch (err.code) {
         case 'auth/invalid-email':
           mensaje = 'El correo electrónico no es válido.';
@@ -71,8 +79,6 @@ export class LoginPage {
           mensaje = 'No se encontró una cuenta con este correo.';
           break;
         case 'auth/wrong-password':
-          mensaje = 'La contraseña es incorrecta.';
-          break;
         case 'auth/invalid-credential':
           mensaje = 'El usuario o la contraseña es incorrecta.';
           break;
@@ -92,9 +98,5 @@ export class LoginPage {
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
-  }
-  loginsinatentificacion() {
-    this.mostrarAlerta('Ingreso exitoso', 'Puedes acceder a los audios sin cuenta. Regístrate solo si deseas guardar tu avance o recibir recomendaciones personalizadas.');
-    this.router.navigateByUrl('/selector');
   }
 }

@@ -5,12 +5,11 @@
       <ion-card-header>
         <ion-card-title>Test entrenamiento</ion-card-title>
       </ion-card-header>
-      <ion-card-content>
-        <p>
-          Si eres menor de 21 años te recomendamos responder este test con la ayuda de un adulto.
-        </p>
-        <ion-button expand="block" style="--background: #5c0911; --color: #fff;" (click)="iniciarTest()">Continuar</ion-button>
-      </ion-card-content>
+      <p>
+        Si eres menor de 21 años te recomendamos responder este test con la ayuda de un adulto.
+      </p>
+      <ion-button expand="block" style="--background: #5c0911; --color: #fff;"
+        (click)="iniciarTest()">Continuar</ion-button>
     </ion-card>
   </div>
 
@@ -24,34 +23,50 @@
 
     <div class="respuestas">
       <ng-container *ngIf="seccionActual === 1">
-        <ion-button expand="block" [color]="respuestasUno[preguntaIndex] === 1 ? 'success' : 'light'" (click)="responderSiNo(1)">Sí</ion-button>
-        <ion-button expand="block" [color]="respuestasUno[preguntaIndex] === 0 ? 'danger' : 'light'" (click)="responderSiNo(0)">No</ion-button>
+        <ion-button expand="block" [color]="respuestasUno[preguntaIndex] === 1 ? 'success' : 'light'"
+          (click)="responderSiNo(1)">Sí</ion-button>
+        <ion-button expand="block" [color]="respuestasUno[preguntaIndex] === 0 ? 'danger' : 'light'"
+          (click)="responderSiNo(0)">No</ion-button>
       </ng-container>
 
       <ng-container *ngIf="seccionActual === 2">
         <ng-container *ngIf="esPreguntaInvertida(); else normalOrder">
-          <ion-button expand="block" [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 0 ? 'tertiary' : 'light'" (click)="responderMultiple(0)">Gran parte del día</ion-button>
-          <ion-button expand="block" [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 1 ? 'tertiary' : 'light'" (click)="responderMultiple(1)">En algunas ocasiones</ion-button>
-          <ion-button expand="block" [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 2 ? 'tertiary' : 'light'" (click)="responderMultiple(2)">Muy pocas veces</ion-button>
-          <ion-button expand="block" [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 3 ? 'tertiary' : 'light'" (click)="responderMultiple(3)">Nunca</ion-button>
+          <ion-button expand="block"
+            [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 0 ? 'tertiary' : 'light'"
+            (click)="responderMultiple(0)">Gran parte del día</ion-button>
+          <ion-button expand="block"
+            [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 1 ? 'tertiary' : 'light'"
+            (click)="responderMultiple(1)">En algunas ocasiones</ion-button>
+          <ion-button expand="block"
+            [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 2 ? 'tertiary' : 'light'"
+            (click)="responderMultiple(2)">Muy pocas veces</ion-button>
+          <ion-button expand="block"
+            [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 3 ? 'tertiary' : 'light'"
+            (click)="responderMultiple(3)">Nunca</ion-button>
         </ng-container>
         <ng-template #normalOrder>
-          <ion-button expand="block" [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 0 ? 'tertiary' : 'light'" (click)="responderMultiple(0)">Nunca</ion-button>
-          <ion-button expand="block" [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 1 ? 'tertiary' : 'light'" (click)="responderMultiple(1)">Muy pocas veces</ion-button>
-          <ion-button expand="block" [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 2 ? 'tertiary' : 'light'" (click)="responderMultiple(2)">En algunas ocasiones</ion-button>
-          <ion-button expand="block" [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 3 ? 'tertiary' : 'light'" (click)="responderMultiple(3)">Gran parte del día</ion-button>
+          <ion-button expand="block"
+            [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 0 ? 'tertiary' : 'light'"
+            (click)="responderMultiple(0)">Nunca</ion-button>
+          <ion-button expand="block"
+            [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 1 ? 'tertiary' : 'light'"
+            (click)="responderMultiple(1)">Muy pocas veces</ion-button>
+          <ion-button expand="block"
+            [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 2 ? 'tertiary' : 'light'"
+            (click)="responderMultiple(2)">En algunas ocasiones</ion-button>
+          <ion-button expand="block"
+            [color]="respuestasDos[preguntaIndex - preguntasUno.length] === 3 ? 'tertiary' : 'light'"
+            (click)="responderMultiple(3)">Gran parte del día</ion-button>
         </ng-template>
       </ng-container>
     </div>
 
     <div class="navegacion">
       <ion-button [disabled]="preguntaIndex === 0" (click)="anterior()">Anterior</ion-button>
-      <ion-button 
-      (click)="siguiente()" 
-      [disabled]="!respuestaSeleccionada()">
-      {{ esUltimaPregunta() ? 'Finalizar' : 'Siguiente' }}
-    </ion-button>
-        </div>
+      <ion-button (click)="siguiente()" [disabled]="!respuestaSeleccionada()">
+        {{ esUltimaPregunta() ? 'Finalizar' : 'Siguiente' }}
+      </ion-button>
+    </div>
   </div>
 
   <div *ngIf="testFinalizado" class="resultado-container">
@@ -70,9 +85,16 @@
       <h2>Resultado del Test</h2>
       <img [src]="gifResultado" class="resultado-gif" />
       <p class="resultado-texto">
-      <strong>{{ txtResultado }}</strong>
+        <strong>{{ txtResultado }}</strong>
       </p>
+      <ion-button expand="block" style="--background: #5c0911; --color: #ffffff;" (click)="irAEntrenamiento()">
+        Ir al entrenamiento
+      </ion-button>
+
+      <ion-button expand="block" style="--background: #707e67; --color: #ffffff;" (click)="irAIinicio()">
+        Regresar al inicio
+      </ion-button>
     </div>
   </ion-content>
-  
+
 </ion-content>

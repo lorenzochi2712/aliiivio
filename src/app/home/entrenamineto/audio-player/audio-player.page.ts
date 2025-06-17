@@ -2,12 +2,16 @@ import { Component, EnvironmentInjector, inject, Input, OnDestroy, OnInit, runIn
 import { AudioService } from 'src/app/services/audio.service';
 import { NgIf, NgFor, CommonModule} from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonToolbar, IonHeader, IonTitle, IonSpinner,IonRow,IonCol } from '@ionic/angular/standalone';
+import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, 
+  IonButton, IonToolbar, IonHeader, IonTitle, IonSpinner,IonRow,IonCol, 
+  IonButtons,IonBackButton,IonIcon} from '@ionic/angular/standalone';
 
 import { Auth } from '@angular/fire/auth';
 import { Firestore, FirestoreModule } from '@angular/fire/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, setDoc } from '@angular/fire/firestore';
+import { addIcons } from 'ionicons';
+import { chevronBackOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-audio-player',
@@ -27,11 +31,15 @@ import { doc, getDoc, setDoc } from '@angular/fire/firestore';
     IonToolbar,
     IonHeader,
     IonTitle,
-    IonSpinner
+    IonSpinner,
+    IonButtons,
+    IonBackButton,IonIcon
   ],
 })
 export class AudioPlayerPage implements OnInit, OnDestroy {
-  constructor() {}
+  constructor() {
+    addIcons({ chevronBackOutline });
+  }
 
   private auth = inject(Auth);
   private firestore = inject(Firestore);
@@ -172,5 +180,9 @@ export class AudioPlayerPage implements OnInit, OnDestroy {
 
     this.saveProgress();
     clearInterval(this.saveInterval);
+  }
+      irAIinicio() {
+     this.audioElement.pause();
+    this.router.navigate(['/selector']);
   }
 }

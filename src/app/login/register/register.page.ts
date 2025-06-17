@@ -6,10 +6,10 @@ import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/services/register.service';
 import { addIcons } from 'ionicons';
 import { IonIcon } from '@ionic/angular/standalone';
-import { personAddOutline, logInOutline, alertCircleOutline, personCircleOutline, personOutline, mailOutline, lockClosedOutline, calendarOutline, homeOutline,eyeOffOutline,eyeOutline } from 'ionicons/icons';
+import { personAddOutline, logInOutline, alertCircleOutline, personCircleOutline, personOutline, chevronBackOutline,mailOutline, lockClosedOutline, calendarOutline, homeOutline,eyeOffOutline,eyeOutline } from 'ionicons/icons';
 import { RouterLink } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import {IonCheckbox, IonContent,IonItem,IonLabel,IonButton,IonInput,IonText,IonButtons} from'@ionic/angular/standalone'
+import {IonCheckbox, IonContent,IonItem,IonLabel,IonButton,IonInput,IonText,IonButtons,IonHeader,IonToolbar,IonBackButton,} from'@ionic/angular/standalone'
 import { TerminosComponent } from './terminos/terminos.component';
 import { inject, runInInjectionContext } from '@angular/core';
 import { Dialog } from '@capacitor/dialog';
@@ -32,7 +32,7 @@ import { Dialog } from '@capacitor/dialog';
     IonLabel,
     IonButton,
     IonText,
-    IonButtons
+    IonButtons,IonHeader,IonToolbar,IonBackButton
   ]
   
 })
@@ -45,7 +45,7 @@ export class RegisterPage {
     private alertCtrl: AlertController,
     private router: Router
   ) {
-    addIcons({personOutline,mailOutline,lockClosedOutline,calendarOutline,homeOutline,personAddOutline,logInOutline,alertCircleOutline,personCircleOutline,eyeOffOutline,eyeOutline});
+    addIcons({personOutline,mailOutline,lockClosedOutline,calendarOutline,homeOutline,chevronBackOutline,personAddOutline,logInOutline,alertCircleOutline,personCircleOutline,eyeOffOutline,eyeOutline});
     this.registerForm = this.fb.group({
       nombre: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],

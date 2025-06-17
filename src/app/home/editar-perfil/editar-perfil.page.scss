@@ -1,0 +1,272 @@
+:host {
+  --ion-background-color: #fff;
+}
+
+ion-content {
+  --background: #5c0911;
+  color: #d3c098;
+}
+
+.content-wrapper {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 10px;
+  overflow-y: auto;
+}
+
+.form-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+ion-item {
+  --background: transparent;
+  --color: #333;
+  margin-bottom: 8px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --inner-padding-end: 8px;
+  --min-height: 56px;
+}
+
+ion-label {
+  color: #5c0911;
+  --color: #5c0911;
+}
+
+ion-input {
+  color: #000;
+  --color: #000;
+  --placeholder-color: #999;
+  --placeholder-opacity: 0.7;
+}
+
+.form-title {
+  text-align: center;
+  color: #5c0911;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+// Separador de secciones
+.section-divider {
+  margin: 20px 16px 10px 16px;
+  padding: 8px 0;
+  border-top: 1px solid #e0e0e0;
+  
+  span {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+  }
+}
+
+// Botones
+.save-button {
+  margin-top: 20px;
+  font-weight: bold;
+  
+  ion-icon {
+    margin-right: 8px;
+  }
+}
+
+.danger-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #ffebee;
+  
+  h3 {
+    color: #d32f2f;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  h2 {
+    color: #d32f2f;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+}
+
+.delete-button {
+  font-weight: bold;
+  
+  ion-icon {
+    margin-right: 8px;
+  }
+}
+
+// Mensajes de validación
+.password-hint {
+  font-size: 12px;
+  color: #666;
+  margin: 4px 16px 8px;
+  line-height: 1.4;
+  
+  &.error {
+    color: #d32f2f;
+    font-weight: 500;
+  }
+}
+
+// Requisitos de contraseña
+.password-requirements {
+  margin: 10px 16px 15px;
+  padding: 12px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #5c0911;
+  
+  .requirements-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #5c0911;
+    margin-bottom: 8px;
+  }
+  
+  .requirements-list {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    
+    li {
+      font-size: 12px;
+      padding: 3px 0;
+      color: #666;
+      position: relative;
+      padding-left: 20px;
+      
+      &:before {
+        content: "○";
+        position: absolute;
+        left: 0;
+        color: #ccc;
+        font-weight: bold;
+      }
+      
+      &.valid {
+        color: #2e7d32;
+        
+        &:before {
+          content: "✓";
+          color: #2e7d32;
+        }
+      }
+      
+      &.invalid {
+        color: #d32f2f;
+        
+        &:before {
+          content: "✗";
+          color: #d32f2f;
+        }
+      }
+    }
+  }
+}
+
+.error-msg {
+  font-size: 12px;
+  color: #d32f2f;
+  margin: 4px 16px 8px;
+  font-weight: 500;
+}
+
+.success-msg {
+  font-size: 12px;
+  color: #2e7d32;
+  margin: 4px 16px 8px;
+  font-weight: 500;
+}
+
+// Estilos del header
+ion-header,
+ion-toolbar {
+  --background: #5c0911;
+  --color: #ffffff;
+  --border-color: #5c0911;
+}
+
+.custom-back-button {
+  color: #d3c098;
+  --color: #d3c098;
+  font-weight: 500;
+}
+
+.custom-back-button ion-icon {
+  font-size: 3rem;
+}
+
+// Estilos para loading y estados
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #666;
+  
+  ion-spinner {
+    margin-bottom: 20px;
+  }
+}
+// Estilos optimizados para editar-perfil.page.scss (< 500 bytes)
+
+.custom-alert {
+  --max-width: 90%;
+  
+  .alert-wrapper { border-radius: 12px; }
+  
+  .alert-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  
+  .alert-message {
+    line-height: 1.4;
+    
+    ul { margin: 10px 0; padding-left: 15px; }
+    li { margin: 5px 0; }
+  }
+  
+  .alert-input {
+    border: 1px solid var(--ion-color-light-shade);
+    border-radius: 8px;
+    padding: 12px;
+    
+    &:focus {
+      border-color: var(--ion-color-primary);
+      outline: none;
+    }
+  }
+  
+  .alert-button {
+    border-radius: 8px;
+    font-weight: 500;
+    margin: 0 5px;
+    
+    &.alert-button-confirm,
+    &.alert-button-danger {
+      --background: var(--ion-color-danger);
+      --color: white;
+      font-weight: 600;
+    }
+    
+    &[role="cancel"] {
+      --background: var(--ion-color-light);
+      --color: var(--ion-color-dark);
+    }
+  }
+}

@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- Flecha de regreso con texto -->
+    <ion-buttons slot="start">
+      <ion-back-button 
+        defaultHref="/home" 
+        text="Regresar" 
+        style="color: #d3c098; --ion-color-base: #d3c098; --color: #d3c098;"
+        icon="arrow-back-outline">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="content-wrapper">
+    <div class="form-card">
+      <h2 class="form-title">Editar perfil</h2>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input 
+            [(ngModel)]="nombre" 
+            type="text" 
+            placeholder="Ingresa tu nombre"
+            clearInput="true">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Correo</ion-label>
+          <ion-input 
+            [(ngModel)]="correo" 
+            type="email" 
+            disabled
+            readonly>
+          </ion-input>
+        </ion-item>
+
+        <!-- Separador visual -->
+        <div class="section-divider">
+          <span>Cambiar contraseña (opcional)</span>
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">Nueva Contraseña</ion-label>
+          <ion-input 
+            [(ngModel)]="password" 
+            type="password"
+            placeholder="Dejar vacío para no cambiar"
+            clearInput="true">
+          </ion-input>
+        </ion-item>
+
+        <!-- Leyenda de contraseña segura - siempre visible -->
+        <div class="password-requirements">
+          <div class="requirements-title">Requisitos para contraseña segura:</div>
+          <ul class="requirements-list">
+            <li [class.valid]="hasMinLength()" [class.invalid]="password && !hasMinLength()">
+              Mínimo 8 caracteres
+            </li>
+            <li [class.valid]="hasUppercase()" [class.invalid]="password && !hasUppercase()">
+              Una letra mayúscula
+            </li>
+            <li [class.valid]="hasLowercase()" [class.invalid]="password && !hasLowercase()">
+              Una letra minúscula
+            </li>
+            <li [class.valid]="hasNumber()" [class.invalid]="password && !hasNumber()">
+              Un número
+            </li>
+            <li [class.valid]="hasSpecialChar()" [class.invalid]="password && !hasSpecialChar()">
+              Un símbolo especial
+            </li>
+          </ul>
+        </div>
+
+        <ion-item *ngIf="password">
+          <ion-label position="floating">Confirmar Nueva Contraseña</ion-label>
+          <ion-input 
+            [(ngModel)]="confirmPassword" 
+            type="password"
+            clearInput="true">
+          </ion-input>
+        </ion-item>
+
+        <div *ngIf="password && confirmPassword && password !== confirmPassword" class="error-msg">
+          Las contraseñas no coinciden.
+        </div>
+
+        <div *ngIf="password && isPasswordValid() && password === confirmPassword" class="success-msg">
+          ✓ Las contraseñas coinciden
+        </div>
+      </ion-list>
+
+      <ion-button
+        expand="block"
+        color="medium"
+        (click)="guardarCambios()"
+        [disabled]="!isFormValid()"
+        class="save-button"
+      >
+        <ion-icon name="save-outline" slot="start"></ion-icon>
+        Guardar cambios
+      </ion-button>
+
+      <!-- Separador para botón peligroso -->
+      <div class="danger-section">
+        <h2>Advertencia</h2>
+        <h3>Esta acción es permanente y no se puede deshacer.</h3>
+        <ion-button 
+          expand="block" 
+          color="danger" 
+          fill="outline"
+          (click)="confirmarEliminacion()"
+          class="delete-button">
+          <ion-icon name="trash-outline" slot="start"></ion-icon>
+          Eliminar cuenta
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

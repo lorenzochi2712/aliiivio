@@ -1,5 +1,5 @@
 ion-content {
-  --background: linear-gradient(to bottom right, #d3c098, #f0e5cd);
+  --background: linear-gradient(to bottom right, #5c0911, #5c0911);
   position: relative;
   min-height: 100vh;
   padding: 20px;
@@ -28,9 +28,11 @@ ion-content {
 ion-card {
   background-color: #d3c098;
   color: #5c0911;
+  margin: 0 auto;
   border-radius: 25px;
   width: 100%;
-  padding: 28px;
+  padding: 20px;
+  align-items: center;
 }
 
 /* Títulos grandes */

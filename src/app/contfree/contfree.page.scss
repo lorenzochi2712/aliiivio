@@ -1,0 +1,105 @@
+.home-background {
+  --background: #5c0911;
+  color: #d3c098;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo-container {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(211, 192, 152, 0.6));
+}
+.welcome-message {
+  text-align: center;
+  font-size: 16px;
+  color: #d3c098;
+  margin: 12px 20px 32px;
+  line-height: 1.4;
+  max-width: 360px;
+}
+.option-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .option-container {
+    flex-direction: row;
+  }
+}
+
+.option-card {
+  
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.option-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(211, 192, 152, 0.8);
+}
+
+.option-img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 19px;
+  margin-bottom: 12px;
+  border: 2px solid #d3c098;
+}
+
+.option-title {
+  font-size: 18px;
+  color: #d3c098;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 0 3px rgba(211, 192, 152, 0.3);
+}
+
+.legend {
+  text-align: center;
+  margin: 40px 20px 12px;
+  font-size: 17px;
+  color: #d3c098;
+  max-width: 360px;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #d80106;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.login-link {
+  color: #d3c098;
+  font-weight: 600;
+  font-size: 17px;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.login-link:hover {
+  color: #ffffff;
+}

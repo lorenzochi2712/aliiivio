@@ -1,5 +1,10 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="irAIinicio()" class="custom-back-button">
+        <ion-icon name="chevron-back-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>Reproductor de Entrenamientos</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -20,8 +25,6 @@
 
       <ion-card-content>
         <!-- El audio se reproduce con control desde el componente -->
-        <p>Reproduciendo: {{ currentAudio.titulo }}</p>
-        
         <ion-row>
           <ion-col>
             <ion-button expand="block" (click)="playPauseAudio()">
@@ -36,6 +39,9 @@
         <ion-button expand="block" (click)="playPrevious()" [disabled]="currentIndex === 0">
           Audio Anterior
         </ion-button>
+        <ion-button expand="block" style="--background: #707e67; --color: #ffffff;" (click)="irAIinicio()">
+        Regresar al inicio
+      </ion-button>
       </ion-card-content>
     </ion-card>
   </div>

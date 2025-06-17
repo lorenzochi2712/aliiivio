@@ -1,7 +1,7 @@
 
 ion-content{
   
-  --background:linear-gradient(313deg,#707e67,#d3c098);
+--background: #5c0911;
 }
 ng-container{
   width: 100%;
@@ -34,9 +34,9 @@ ng-container{
     padding-top: 10px;
     justify-content: space-between;
     .first_div{
-      padding-top: 1px;
+      padding-top: 0px;
       .welcome{
-        font-size: 32px;
+        font-size: 27px;
         color: white;
         font-weight: 500;
       }
@@ -60,7 +60,7 @@ ng-container{
   }
   .content_div{
     background: white;
-    height: 82vh;
+    height: 92vh;
     width: 100%;
     border-top-right-radius: 65px;
     margin-top: -75px;
@@ -104,12 +104,7 @@ ng-container{
       }
     }
   }
-  .animated{
-    -webkit-animation-duration: 2s;
-    animation-duration: 5s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-  }
+  //Correccion de animación
 @-webkit-keyframes bounceInUp{
   0%{
     opacity:0;
@@ -150,4 +145,15 @@ ng-container{
     -webkit-transform: translateY(0);
   }
 }
+}
+.logo-container {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(211, 192, 152, 0.6));
 }

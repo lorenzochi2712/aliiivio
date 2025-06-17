@@ -1,4 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Continuar sin registro" icon="chevron-back-outline" defaultHref="/contfree" class="custom-back-button">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
+  <div class="logo-container">
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+  </div>
   <div class="register-section">
     <div class="heading">
       <h1>Registro</h1>
@@ -74,7 +85,7 @@
           Registrarse
         </ion-button>
         <ion-button [routerLink]="['/login']">
-          Regresar al inicio
+          Ir al inicio de sesión
         </ion-button>
       </div>
     </form>

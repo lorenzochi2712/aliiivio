@@ -1,5 +1,9 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Regresar" icon="arrow-back-outline" defaultHref="/home" class="custom-back-button">
+      </ion-back-button>
+    </ion-buttons>
     <ion-title>Reproductor</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,14 +17,8 @@
   <div *ngIf="!loading && currentAudio" class="audio-container">
     <ion-card class="audio-card">
       <img [src]="currentAudio.img" alt="Portada del audio" />
-
-      <ion-card-header>
-        <ion-card-title class="titulo">{{ currentAudio.titulo }}</ion-card-title>
-      </ion-card-header>
-
       <ion-card-content>
-        <p>Reproduciendo: {{ currentAudio.titulo }}</p>
-        <ion-button expand="block" color="primary" (click)="playPauseAudio()">
+        <ion-button expand="block" (click)="playPauseAudio()">
           {{ audioElement.paused ? 'Reproducir' : 'Pausar' }}
         </ion-button>
       </ion-card-content>

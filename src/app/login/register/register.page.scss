@@ -1,10 +1,19 @@
 ion-content {
-  --background: #efefef url("../../../assets/fondo1.jpg") no-repeat center center / cover;
+  --background: #5c0911;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
-
+.logo {
+  width: 7rem;
+  height: auto;
+  filter: drop-shadow(0 0 14px rgba(211, 192, 152, 0.55));
+}
+.logo-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
 .register-section {
   height: 78vh;
   width: 100%;
@@ -145,3 +154,17 @@ ion-content {
   font-size: 1.3rem;
   color: #5c0911;
 }
+.custom-back-button {
+  color: #d3c098;
+  --color: #d3c098;
+  font-weight: 500;
+}
+
+.custom-back-button ion-icon {
+  font-size: 3rem; /* ajusta el tamaño de la flecha */
+}
+  ion-header, ion-toolbar {
+    --background: #5c0911;
+    --color: #ffffff;
+    --border-color: #5c0911;
+  }

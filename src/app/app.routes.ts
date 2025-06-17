@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
-
+import { AuthGuard } from './guards/auth.guard';
 export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+    canActivate: [AuthGuard]  // ✅ PROTEGIDA
   },
   {
     path: '',
@@ -32,7 +33,8 @@ export const routes: Routes = [
   },
   {
     path: 'test',
-    loadComponent: () => import('./home/test/test.page').then( m => m.TestPage)
+    loadComponent: () => import('./home/test/test.page').then( m => m.TestPage),
+    canActivate: [AuthGuard]  // ✅ PROTEGIDA
   },
   {
     path: 'audio-playerent',
@@ -40,7 +42,21 @@ export const routes: Routes = [
   },
   {
     path: 'selector',
-    loadComponent: () => import('./selector/selector.page').then( m => m.SelectorPage)
-  }
+    loadComponent: () => import('./selector/selector.page').then( m => m.SelectorPage),
+    canActivate: [AuthGuard]  // ✅ PROTEGIDA
+  },
+  {
+    path: 'contfree',
+    loadComponent: () => import('./contfree/contfree.page').then( m => m.ContfreePage)
+  },
+  {
+    path: 'reproductor',
+    loadComponent: () => import('./contfree/reproductor/reproductor.page').then( m => m.ReproductorPage)
+  },
+  {
+    path: 'editar-perfil',
+    loadComponent: () => import('./home/editar-perfil/editar-perfil.page').then( m => m.EditarPerfilPage),
+    canActivate: [AuthGuard]  // ✅ PROTEGIDA
+  },
   
 ];

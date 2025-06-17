@@ -22,9 +22,9 @@ export class TestPage {
   gifResultado = '';
   txtResultado = '';
 // Aquí deberías colocar las rutas correctas de los 3 gifs cargados
-  gifVerde = 'assets/gifs/resultado-verde.gif'; // Puntaje bajo
-  gifAmarillo = 'assets/gifs/resultado-amarillo.gif'; // Puntaje medio
-  gifRojo = 'assets/gifs/resultado-rojo.gif'; // Puntaje alto
+  gifVerde = 'assets/gifs/verde.gif'; // Puntaje bajo
+  gifAmarillo = 'assets/gifs/amarillo.gif'; // Puntaje medio
+  gifRojo = 'assets/gifs/rojo.gif'; // Puntaje alto
 
   preguntasUno: string[] = [
     '¿En estas semanas recientes has tenido problemas para dormir, como dormir mucho, poco, tener pesadillas o terrores nocturnos?',
@@ -153,9 +153,9 @@ export class TestPage {
       this.gifResultado = this.gifRojo;
     }
     if(this.mostrarResultado){
-      setTimeout(()=> {
+     /* setTimeout(()=> {
         this.irAEntrenamiento();
-      },7700)
+      },7700)*/
     }
   }
 
@@ -163,6 +163,9 @@ export class TestPage {
     this.router.navigate(['/audio-playerent'], {
       state: { playlist: this.playlist }
     });
+  }
+    irAIinicio() {
+    this.router.navigate(['/selector']);
   }
   
 }

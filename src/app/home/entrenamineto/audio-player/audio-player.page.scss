@@ -18,7 +18,7 @@
   }
   :host {
     ion-content {
-      --background: #d3c098;
+      --background: #5c0911;
       color: #5c0911;
     }
   
@@ -88,3 +88,13 @@
     box-shadow: none !important;
     -webkit-tap-highlight-color: transparent;
   }
+  .custom-back-button {
+  color: #d3c098;
+  --color: #d3c098;
+  font-weight: 500;
+}
+
+.custom-back-button ion-icon {
+  font-size: 3rem;
+  /* ajusta el tamaño de la flecha */
+}

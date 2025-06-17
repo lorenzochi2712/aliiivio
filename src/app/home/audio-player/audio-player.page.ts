@@ -11,8 +11,10 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCardContent,
-  IonButton
+  IonButton,IonButtons,IonBackButton
 } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { arrowBackOutline, settingsOutline } from 'ionicons/icons';
 @Component({
   selector: 'app-audio-player',
   templateUrl: './audio-player.page.html',
@@ -25,10 +27,9 @@ import {
     IonContent,
     IonSpinner,
     IonCard,
-    IonCardHeader,
-    IonCardTitle,
     IonCardContent,
-    IonButton,NgIf
+    IonButton,NgIf,
+    IonButtons,IonBackButton
   ]
 })
 export class AudioPlayerPage implements OnInit {
@@ -37,7 +38,9 @@ export class AudioPlayerPage implements OnInit {
   audioElement = new Audio();
   isPlaying = false; // 👈 Estado del audio
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {
+    addIcons({ settingsOutline, arrowBackOutline });
+  }
 
   ngOnInit() {
     // Escuchar eventos del audio

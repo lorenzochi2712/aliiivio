@@ -1,54 +1,92 @@
+<ion-header>
+  <ion-toolbar style="--background: #5c0911;">
+    <!-- Flecha de regreso con texto -->
+    <ion-buttons slot="start">
+      <ion-back-button 
+        defaultHref="/selector" 
+        text="Regresar" 
+        style="color: #d3c098; --ion-color-base: #d3c098; --color: #d3c098;"
+        icon="arrow-back-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <!-- Botón de configuración -->
+    <ion-buttons slot="end">
+      <ion-button id="config-button" style="color: #d3c098;">
+        <ion-icon 
+          slot="icon-only" 
+          name="settings-outline" 
+          style="color: #d3c098; stroke-width: 2px; --ion-icon-stroke-width: 32px;">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
+   <div class="logo-container">
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+  </div>
   <div class="main_content_div">
     <div class="user_div">
-      <div class="first_div" >
-        
-        <ion-label class="welcome">Bienvenido</ion-label>
+      <div class="first_div">
+        <ion-label class="welcome">Tu bienestar en un click!…</ion-label>
       </div>
     </div>
-  <div class="content_div animated bounceInUp" *ngIf="edad !== null">
-      <ion-label>
-        Aqui esta lo que buscabas, elige una opción:
-      </ion-label>
-    <!-- mayor de 20 años -->
+
+    <!-- Popover de configuración -->
+    <ion-popover trigger="config-button" triggerAction="click" showBackdrop="false">
+      <ng-template>
+        <ion-list>
+          <ion-item button (click)="editarPerfil1()">Editar perfil</ion-item>
+          <ion-item button (click)="cerrarSesion()">Cerrar sesión</ion-item>
+        </ion-list>
+      </ng-template>
+    </ion-popover>
+
+    <div class="content_div animated bounceInUp" *ngIf="edad !== null">
       <ion-grid fixed>
-        <ion-row *ngIf="edad >= 21;"> 
+        <!-- Mayor de 20 años -->
+        <ion-row *ngIf="edad >= 21;">
           <ion-col size="6" (click)="goToAudio(item)" *ngFor="let item of subjectsmayor">
-             <div class="col_div" routerLink={{item.route}}>
+            <div class="col_div">
               <ion-thumbnail>
                 <img alt="Silhouette of mountains" src="{{item.img}}" />
               </ion-thumbnail>
-            </div> 
+            </div>
           </ion-col>
-            <ion-col size="6" (click)="goToAudioentrenamiento21(item)" *ngFor="let item of entrenamientosmayor">
-              <div class="col_div">
-                <ion-thumbnail>
-                  <img alt="Silhouette of mountains" src="{{item.img}}" />
-                </ion-thumbnail>
-              </div> 
+
+          <ion-col size="6" (click)="goToAudioentrenamiento21(item)" *ngFor="let item of entrenamientosmayor">
+            <div class="col_div">
+              <ion-thumbnail>
+                <img alt="Silhouette of mountains" src="{{item.img}}" />
+              </ion-thumbnail>
+            </div>
           </ion-col>
         </ion-row>
-        <!-- menor igual de 20 años -->
-        <ion-row *ngIf="edad < 21;"> 
+
+        <!-- Menor o igual a 20 años -->
+        <ion-row *ngIf="edad < 21;">
           <ion-col size="6" (click)="goToAudio(item)" *ngFor="let item of subjectsmenor">
-             <div class="col_div" routerLink={{item.route}}>
+            <div class="col_div">
               <ion-thumbnail>
                 <img alt="Silhouette of mountains" src="{{item.img}}" />
               </ion-thumbnail>
-            </div>  
+            </div>
           </ion-col>
+
           <ion-col size="6" (click)="goToAudioentrenamiento(item)" *ngFor="let item of entrenaminetosmenor">
             <div class="col_div">
-             <ion-thumbnail>
-               <img alt="Silhouette of mountains" src="{{item.img}}" />
-             </ion-thumbnail>
-           </div> 
-        </ion-col>
+              <ion-thumbnail>
+                <img alt="Silhouette of mountains" src="{{item.img}}" />
+              </ion-thumbnail>
+            </div>
+          </ion-col>
         </ion-row>
       </ion-grid>
-  <div *ngIf="edad === null">
-    <p>Cargando información del usuario...</p>
+    </div>
+
+    <div *ngIf="edad === null">
+      <p>Cargando información del usuario...</p>
+    </div>
   </div>
-</div>
-</div>
 </ion-content>
