@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } 
 import { IonicModule, AlertController, ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service'; // ajusta la ruta según tu proyecto
 import { Router } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { chevronBackOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-forgot-password',
@@ -22,6 +24,7 @@ export class ForgotPasswordPage {
     private toastCtrl: ToastController,
     private router: Router
   ) {
+    addIcons({chevronBackOutline });
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });

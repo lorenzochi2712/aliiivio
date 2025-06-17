@@ -20,6 +20,7 @@ import { Capacitor } from '@capacitor/core';
 import { environment } from './environments/environment';
 import { getApp } from '@angular/fire/app';
 import { register } from 'swiper/element/bundle'
+import { StatusBar, Style } from '@capacitor/status-bar';
 
 import { addIcons } from 'ionicons';
 import { personOutline, mailOutline, lockClosedOutline, homeOutline, calendarOutline } from 'ionicons/icons';
@@ -35,7 +36,11 @@ addIcons({
 if (environment.production) {
   enableProdMode();
 }
-
+// Configura el StatusBar para evitar superposición
+if (Capacitor.isNativePlatform()) {
+  StatusBar.setOverlaysWebView({ overlay: false }); // 👈 evita que el contenido quede debajo del status bar
+  StatusBar.setStyle({ style: Style.Dark });         // opcional: pone los íconos oscuros (útil si tu header es claro)
+}
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
