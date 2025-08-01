@@ -23,9 +23,30 @@ import { register } from 'swiper/element/bundle'
 import { StatusBar, Style } from '@capacitor/status-bar';
 
 import { addIcons } from 'ionicons';
-import { personOutline, mailOutline, lockClosedOutline, homeOutline, calendarOutline } from 'ionicons/icons';
+import {
+  personOutline,
+  mailOutline,
+  lockClosedOutline,
+  homeOutline,
+  calendarOutline
+} from 'ionicons/icons';
+import { Keyboard } from '@capacitor/keyboard';
 
-register();
+if (Capacitor.isNativePlatform()) {
+Keyboard.setResizeMode({ mode: 'none' as any });
+}
+
+// ✅ Bloquear gestos de zoom (pinch/doble tap) completamente
+['gesturestart', 'gesturechange', 'gestureend'].forEach(event => {
+  document.addEventListener(event, function (e) {
+    e.preventDefault();
+  }, { passive: false }); // 👈 importante para que funcione en todos los navegadores
+});
+
+// Registrar componentes de Swiper
+//register();
+
+// Agregar íconos personalizados de Ionicons
 addIcons({
   'person-outline': personOutline,
   'mail-outline': mailOutline,
@@ -33,14 +54,19 @@ addIcons({
   'home-outline': homeOutline,
   'calendar-outline': calendarOutline
 });
+
+// Activar modo producción si aplica
 if (environment.production) {
   enableProdMode();
 }
-// Configura el StatusBar para evitar superposición
+
+// Configurar la barra de estado en dispositivos móviles
 if (Capacitor.isNativePlatform()) {
-  StatusBar.setOverlaysWebView({ overlay: false }); // 👈 evita que el contenido quede debajo del status bar
-  StatusBar.setStyle({ style: Style.Dark });         // opcional: pone los íconos oscuros (útil si tu header es claro)
+  StatusBar.setOverlaysWebView({ overlay: false }); // evita superposición del status bar
+  StatusBar.setStyle({ style: Style.Dark }); // íconos oscuros
 }
+
+// Bootstrap de la app principal
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
@@ -49,14 +75,14 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(),
     provideAnimationsAsync(),
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    //provideAuth(() => getAuth()),
+
+    // Firebase Auth con persistencia
     provideAuth(() => {
       const auth = initializeAuth(getApp(), {
         persistence: indexedDBLocalPersistence
       });
       return auth;
     }),
-
 
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),

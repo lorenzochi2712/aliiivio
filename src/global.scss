@@ -1,179 +1,120 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
+/* ============================
+   Limpieza de global.scss
+   ============================ */
 
-/* Core CSS required for Ionic components to work properly */
-@import "@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import '@ionic/angular/css/display.css';
-
-/* Optional CSS utils that can be commented out */
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
+/* Import Ionic styles */
 @import "@ionic/angular/css/core.css";
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
-
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
 @import "@ionic/angular/css/display.css";
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/* Reset y fuente base */
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  touch-action: manipulation;
+  overscroll-behavior: contain;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: 16px !important;
+}
+
+/* Estructura base */
+ion-app {
+  height: 100%;
+  background: #ffffff;
+}
 
 ion-content {
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
+  --background: #ffffff;
+  font-size: 16px !important;
 }
+
+/* Encabezados */
+ion-header,
+ion-toolbar {
+  --background: #5c0911;
+  --color: #ffffff;
+  --border-color: transparent;
+}
+
+/* Botones */
 ion-button {
-    text-transform: none;
+  font-weight: bold;
+  border-radius: 12px;
+  --box-shadow: none;
 }
 
-// safe padding for ios
-.safe-p-bottom{
-    padding-bottom: constant(safe-area-inset-bottom); // for ios 13+
-    padding-bottom: env(safe-area-inset-bottom); // for previous ios versions
+/* Input */
+ion-button {
+  font-size: 16px !important;
 }
-
-.submit {
-    margin-top: 40px;
+ion-input,
+ion-textarea,
+input,
+textarea {
+  font-size: 16px !important;
 }
-
-.empty {
-    text-align: center;
-    padding: 60px;
-    opacity: 30%;
-
-    ion-icon {
-        font-size: 100px;
-    }
-}
-
-.d-flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.custom-input {
-    --border-color: #e0e0e0;
-    --border-radius: 15px;
-    --border-style: solid;
-    --border-width: 1px;
-    margin: 20px 0;
-
-    ion-label {
-        position: relative;
-        bottom: 2px;
-    }
-
-    .eye-icon {
-        position: relative;
-        top: 13px;
-    }
-}
-
-.validators {
-    color: var(--ion-color-danger);
-    font-size: 13px;
-    text-align: center;
-}
-
-
-.auth-form {
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-}
-
-.product-item {
-    --padding-top: 20px;
-
-    ion-avatar {
-        width: 70px;
-        height: 80px;
-        --border-radius: 15px;
-    }
-
-    .name {
-        font-weight: 600;
-        padding-bottom: 5px;
-    }
-
-    .data {
-        font-size: 13px;
-
-        strong {
-            font-weight: 500;
-        }
-    }
-
-    .option-btn {
-        font-size: 27px;
-    }
-
-    ion-chip {
-        font-size: 14px;
-        border-radius: 10px;
-        margin-left: 0;
-    }
-}
-
-@media (min-width: 769px) {
-    .auth-form {
-        width: 500px;
-    }
-
-    .add-update-modal {
-        --height: 680px;
-    }
-}
-.custom-alert {
-  --background: #d3c098;           // color de fondo del alert
-  --color: #5c0911;                // color del texto
-  --max-width: 90%;                // ancho del alert
-
-  .alert-wrapper {
-    border-radius: 18px;
-    padding: 20px;
-    font-size: 16px;
+/* Evitar zoom automático en iOS */
+@media screen and (max-device-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
   }
+}
 
-  .alert-title {
-    font-size: 23px;
-    font-weight: bold;
-    color: #5c0911;
-  }
+/* Ocultar scroll */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
 
-  .alert-message {
-    font-size: 18px;
-    color: #5c0911;
-  }
+/* Utilitarias */
+.text-center {
+  text-align: center;
+}
 
-  .alert-button {
-    font-weight: bold;
-    color: #5c0911;
+.mt-1 {
+  margin-top: 1rem;
+}
 
-    &.alert-button-role-cancel {
-      color: #5c0911;
-    }
-  }
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+/* Tipografía */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

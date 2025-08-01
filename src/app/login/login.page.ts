@@ -1,26 +1,31 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { addIcons } from 'ionicons';
-import { IonIcon } from '@ionic/angular/standalone';
-import { personAddOutline, logInOutline, alertCircleOutline, personCircleOutline, eyeOutline, eyeOffOutline,chevronBackOutline } from 'ionicons/icons';
-import { RouterLink } from '@angular/router';
-
+import {
+  personAddOutline,
+  logInOutline,
+  eyeOutline,
+  eyeOffOutline,
+  chevronBackOutline
+} from 'ionicons/icons';
 import {
   IonHeader,
   IonToolbar,
-  IonTitle,
   IonContent,
   IonItem,
   IonLabel,
   IonInput,
   IonButton,
   IonButtons,
-  IonBackButton
+  IonBackButton,
+  IonIcon
 } from '@ionic/angular/standalone';
+import { RouterLink } from '@angular/router';
 import { Dialog } from '@capacitor/dialog';
+import { Keyboard } from '@capacitor/keyboard';
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-login',
@@ -38,65 +43,70 @@ import { Dialog } from '@capacitor/dialog';
     IonInput,
     IonButton,
     FormsModule,
-    ReactiveFormsModule, IonIcon, RouterLink
+    ReactiveFormsModule,
+    IonIcon,
+    RouterLink
   ]
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
   loginForm = inject(FormBuilder).group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   });
 
+  showPassword = false;
+
   private authService = inject(AuthService);
   private alertCtrl = inject(AlertController);
   private router = inject(Router);
+
   constructor() {
-    addIcons({ personAddOutline, logInOutline, alertCircleOutline, personCircleOutline, eyeOutline, eyeOffOutline,chevronBackOutline });
+    addIcons({ personAddOutline, logInOutline, eyeOutline, eyeOffOutline, chevronBackOutline });
   }
 
-   // 🔐 Lógica de inicio de sesión
+  ngOnInit() {
+    Keyboard.addListener('keyboardWillShow', () => {
+      document.body.classList.add('keyboard-open');
+
+      // Scroll al botón de login
+      setTimeout(() => {
+        const button = document.querySelector('.login-button');
+        button?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    });
+
+    Keyboard.addListener('keyboardWillHide', () => {
+      document.body.classList.remove('keyboard-open');
+    });
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
   async login() {
     const { email, password } = this.loginForm.value;
-
     if (!email || !password) return;
 
     try {
       await this.authService.login(email, password);
-      this.loginForm.reset(); // Limpiamos el formulario
-      localStorage.setItem('usuarioActivo', 'true'); // Guardamos bandera (opcional)
-      this.router.navigateByUrl('/selector'); // Redirigimos
+      this.loginForm.reset();
+      localStorage.setItem('usuarioActivo', 'true');
+      this.router.navigateByUrl('/selector');
     } catch (err: any) {
-      let mensaje = 'Ocurrió un error inesperado. Intenta de nuevo.';
-      // 🎯 Manejamos errores de Firebase Auth
-      switch (err.code) {
-        case 'auth/invalid-email':
-          mensaje = 'El correo electrónico no es válido.';
-          break;
-        case 'auth/user-disabled':
-          mensaje = 'Este usuario ha sido deshabilitado.';
-          break;
-        case 'auth/user-not-found':
-          mensaje = 'No se encontró una cuenta con este correo.';
-          break;
-        case 'auth/wrong-password':
-        case 'auth/invalid-credential':
-          mensaje = 'El usuario o la contraseña es incorrecta.';
-          break;
-        default:
-          mensaje = err.message;
-      }
-      this.mostrarAlerta('Error de inicio de sesión', mensaje);
+      const mensaje = this.obtenerMensajeDeError(err.code, err.message);
+      await Dialog.alert({ title: 'Error de inicio de sesión', message: mensaje });
     }
   }
-  async mostrarAlerta(title: string, message: string) {
-    await Dialog.alert({
-      title,
-      message,
-    });
-  }
-  showPassword = false; // 🔐 Estado inicial: contraseña oculta
 
-  togglePasswordVisibility() {
-    this.showPassword = !this.showPassword;
+  private obtenerMensajeDeError(code: string, fallback: string): string {
+    const mensajes: { [key: string]: string } = {
+      'auth/invalid-email': 'El correo electrónico no es válido.',
+      'auth/user-disabled': 'Este usuario ha sido deshabilitado.',
+      'auth/user-not-found': 'No se encontró una cuenta con este correo.',
+      'auth/wrong-password': 'El usuario o la contraseña es incorrecta.',
+      'auth/invalid-credential': 'El usuario o la contraseña es incorrecta.'
+    };
+    return mensajes[code] || fallback || 'Ocurrió un error inesperado.';
   }
 }

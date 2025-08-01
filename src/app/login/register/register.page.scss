@@ -14,6 +14,17 @@ ion-content {
   margin-bottom: 10px;
   text-align: center;
 }
+.logo-register {
+  text-align: center;
+  margin-top: 30px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hide-logo {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
 .register-section {
   height: 78vh;
   width: 100%;
@@ -168,3 +179,50 @@ ion-content {
     --color: #ffffff;
     --border-color: #5c0911;
   }
+.password-rules {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  padding-left: 10px;
+
+  p {
+    margin: 0.2rem 0;
+    color: #b00020;
+    transition: color 0.3s, transform 0.3s;
+
+    &::before {
+      content: '✘ ';
+      color: #b00020;
+      transition: color 0.3s;
+    }
+
+    &.valid {
+      color: #388e3c;
+      transform: translateX(10px);
+    }
+
+    &.valid::before {
+      content: '✔ ';
+      color: #388e3c;
+    }
+  }
+}
+.register-content {
+  --background: #5c0911; // o el que uses
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  overflow-x: hidden; // ❌ evitar scroll horizontal
+  overflow-y: auto;   // ✅ permitir scroll vertical
+  height: 100%;
+
+  ion-grid, ion-row, ion-col, form {
+    width: 100%;
+    max-width: 500px; // o lo que prefieras
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+}
+
+

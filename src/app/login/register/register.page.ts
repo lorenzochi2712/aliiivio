@@ -9,9 +9,8 @@ import { IonIcon } from '@ionic/angular/standalone';
 import { personAddOutline, logInOutline, alertCircleOutline, personCircleOutline, personOutline, chevronBackOutline,mailOutline, lockClosedOutline, calendarOutline, homeOutline,eyeOffOutline,eyeOutline } from 'ionicons/icons';
 import { RouterLink } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import {IonCheckbox, IonContent,IonItem,IonLabel,IonButton,IonInput,IonText,IonButtons,IonHeader,IonToolbar,IonBackButton,} from'@ionic/angular/standalone'
-import { TerminosComponent } from './terminos/terminos.component';
-import { inject, runInInjectionContext } from '@angular/core';
+import { Keyboard } from '@capacitor/keyboard';
+import {IonCheckbox, IonContent,IonItem,IonLabel,IonButton,IonInput,IonText,IonButtons,IonHeader,IonToolbar,IonBackButton,} from'@ionic/angular/standalone';
 import { Dialog } from '@capacitor/dialog';
 @Component({
   selector: 'app-register',
@@ -38,7 +37,7 @@ import { Dialog } from '@capacitor/dialog';
 })
 export class RegisterPage {
   registerForm: FormGroup;
-
+  isKeyboardOpen = false;
   constructor(
     private fb: FormBuilder,
     private registerService: RegisterService,
@@ -54,9 +53,35 @@ export class RegisterPage {
       domicilio: ['', Validators.required],
       terminos: [false, Validators.requiredTrue]  // ✅ Nuevo campo con validación
     });
+    Keyboard.addListener('keyboardWillShow', () => {
+      this.isKeyboardOpen = true;
+    });
+
+    Keyboard.addListener('keyboardWillHide', () => {
+      this.isKeyboardOpen = false;
+    });
   }
+  passwordValidations = {
+  length: false,
+  uppercase: false,
+  lowercase: false,
+  number: false,
+  symbol: false,
+};
+updatePasswordValidations(password: string) {
+  this.passwordValidations = {
+    length: password.length >= 8,
+    uppercase: /[A-Z]/.test(password),
+    lowercase: /[a-z]/.test(password),
+    number: /\d/.test(password),
+    symbol: /[\W_]/.test(password)
+  };
+}
 ngOnInit() {
-  this.registerForm = this.fb.group({
+  this.registerForm.get('password')?.valueChanges.subscribe(password => {
+  this.updatePasswordValidations(password);
+});
+    this.registerForm = this.fb.group({
     nombre: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: [
@@ -69,6 +94,10 @@ ngOnInit() {
     confirmPassword: ['', Validators.required],
     terminos: [false, Validators.requiredTrue]
   }, { validators: this.passwordsMatchValidator });
+
+  this.registerForm.get('password')?.valueChanges.subscribe(password => {
+    this.updatePasswordValidations(password);
+  });
 }
 async register() {
   if (this.registerForm.invalid) {
@@ -150,5 +179,4 @@ async mostrarAlertaNativa() {
     message: 'Tu cuenta ha sido creada correctamente.'
   });
 }
-
 }

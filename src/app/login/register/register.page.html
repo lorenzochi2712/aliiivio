@@ -1,13 +1,14 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button text="Continuar sin registro" icon="chevron-back-outline" defaultHref="/contfree" class="custom-back-button">
+      <ion-back-button text="Continuar sin registro" icon="chevron-back-outline" defaultHref="/contfree"
+        class="custom-back-button">
       </ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="false">
-  <div class="logo-container">
+<ion-content class="register-content"  scrollY="true" scrollX="false" fullscreen>
+  <div class="logo-register" [ngClass]="{ 'hide-logo': isKeyboardOpen }">
     <img src="assets/logo.png" alt="Logo" class="logo" />
   </div>
   <div class="register-section">
@@ -56,9 +57,17 @@
             <ion-icon [name]="showConfirmPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
           </ion-buttons>
         </ion-item>
+        <!-- Validaciones de seguridad de contraseña -->
+        <div class="password-rules">
+          <ion-text>
+            <p [class.valid]="passwordValidations.length">Al menos 8 caracteres</p>
+            <p [class.valid]="passwordValidations.uppercase">Una letra mayúscula</p>
+            <p [class.valid]="passwordValidations.lowercase">Una letra minúscula</p>
+            <p [class.valid]="passwordValidations.number">Un número</p>
+            <p [class.valid]="passwordValidations.symbol">Un símbolo</p>
+          </ion-text>
+        </div>
       </div>
-
-
       <!-- Error: contraseñas no coinciden -->
       <ion-text color="danger" *ngIf="registerForm.hasError('passwordsMismatch') && registerForm.touched">
         <p class="ion-padding-start">Las contraseñas no coinciden.</p>

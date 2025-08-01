@@ -168,6 +168,7 @@ export class HomePage {
         img: 'https://aliiivio.com/img_entrenamientos/portadas21/2_lavozdetucuerpo.jpg',
         titulo: 'LA VOZ DE TU CUERPO',
         route: '/audio-player',
+        //Hay que revisar aqui el audio en cpanel
         rutaaudio: 'https://aliiivio.com/audios_independientes/audios_independientes_21/lavozdetucuerpo.mp3',
         descripcion: 'APRENDE A ESCUCHAR A TU CUERPO PARA RECUPERAR TU BIENESTAR FISICO Y EMOCIONAL'
       },
@@ -252,12 +253,12 @@ export class HomePage {
       {
         titulo: 'Tu miedo amigo',
         img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientonecesitoayuda.jpg',
-        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/necesitoayuda/7_CARITAS.mp3'
+        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/necesitoayuda/8_TUMIEDOAMIGO.mp3'
       },
       {
         titulo: 'Curando a tu peluche',
         img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientonecesitoayuda.jpg',
-        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/necesitoayuda/8_TUMIEDOAMIGO.mp3'
+        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/necesitoayuda/9_CURANDOATUPELUCHE.mp3'
       },
       {
         titulo: 'Cada cosa en su lugar',
@@ -295,7 +296,7 @@ export class HomePage {
       {
         titulo: 'Emociones aliviadas',
         img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientocalmatuansiedad.jpg',
-        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/calmatuansiedad/6_EMOCIONESLIVIADAS.mp3'
+        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/calmatuansiedad/9_EMOCIONESALIVIADAS.mp3'
       },
       {
         titulo: 'Carita feliz',
@@ -308,21 +309,21 @@ export class HomePage {
         rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/calmatuansiedad/8_DOMADORDEMIEDOS.mp3'
       },
       {
-        titulo: 'Emociones aliviadas',
+        titulo: 'Emociones curativas',
         img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientocalmatuansiedad.jpg',
         rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/calmatuansiedad/.mp3'
       },
       {
         titulo: 'Reacomodando',
         img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientocalmatuansiedad.jpg',
-        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/calmatuansiedad/7_REACOMODANDO.mp3'
+        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/calmatuansiedad/10_REACOMODANDO.mp3'
       },
     ]
 
     //=============== Audios de ENTRENAMIENTOS mayor de 20 años ===============================
     this.audiosnecesitoayuda21 = [
       {
-        titulo: 'El acuerdo con ayuda',
+        titulo: 'El acuerdo con tu vida',
         img: 'https://aliiivio.com/img_entrenamientos/portadas21/entrenamientonecesitoayuda.jpg',
         rutaaudio: 'https://aliiivio.com/audentrenamientos/mayor20/necesitoayuda/1_ELACUERDOCONAYUDA.mp3'
       },
