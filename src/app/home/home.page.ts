@@ -70,7 +70,23 @@ export class HomePage {
       // Si no se recibe edad, puedes redirigir a selector o mostrar error
       this.router.navigate(['/selector']);
     }
+    //================Audios independientes menor de 20 años ====================
     this.subjectsmenor = [
+      {
+        img: 'https://aliiivio.com/img_entrenamientos/portadas20/5MINUTOS1HORA.jpg',
+        titulo: '5 MINUTOS UNA HORA DE DESCANSO',
+        route: '/audio-player',
+        rutaaudio: 'https://aliiivio.com/audios_independientes/5MINUTOSUNAHORA.mp3',
+        //Falta link de audio
+        descripcion: 'DATE 5 MINUTOS SIÉNTETE COMO SI HUBIERAS DESCANSADO DORMIDO 1 HORA'
+      },
+      {
+        img: 'https://aliiivio.com/img_entrenamientos/portadas20/ACUERDOCONTUVIDA.jpg',
+        titulo: 'ACUERDO CON TU VIDA PARA NIÑOS',
+        route: '/audio-player',
+        rutaaudio: 'https://aliiivio.com/audios_independientes/ACUERDOCONTUVIDA.mp3',
+        descripcion: 'EN LO DIFÍCIL ENCUENTRA UN MOTIVO PARA SEGUIR ADELANTE'
+      },
       {
         img: 'https://aliiivio.com/img_entrenamientos/portadas20/1_sacalo.jpg',
         titulo: 'SÁCALO',
@@ -128,7 +144,23 @@ export class HomePage {
         descripcion: ''
       }
     ];
+        //================Audios independientes menor de 20 años ====================
     this.subjectsmayor = [
+            {
+        img: 'https://aliiivio.com/img_entrenamientos/portadas20/5MINUTOS1HORA.jpg',
+        titulo: '5 MINUTOS UNA HORA DE DESCANSO',
+        route: '/audio-player',
+        rutaaudio: 'https://aliiivio.com/audios_independientes/5MINUTOSUNAHORA.mp3',
+        //Falta link de audio
+        descripcion: 'DATE 5 MINUTOS SIÉNTETE COMO SI HUBIERAS DESCANSADO DORMIDO 1 HORA'
+      },
+      {
+        img: 'https://aliiivio.com/img_entrenamientos/portadas20/ACUERDOCONTUVIDA.jpg',
+        titulo: 'ACUERDO CON TU VIDA PARA NIÑOS',
+        route: '/audio-player',
+        rutaaudio: 'https://aliiivio.com/audios_independientes/ACUERDOCONTUVIDA.mp3',
+        descripcion: 'EN LO DIFÍCIL ENCUENTRA UN MOTIVO PARA SEGUIR ADELANTE'
+      },
       {
         img: 'https://aliiivio.com/img_entrenamientos/portadas21/1_catarsis_selectiva.jpg',
         titulo: 'CATARSIS SELECTIVA',
@@ -187,6 +219,7 @@ export class HomePage {
         descripcion: ''
       }
     ];
+        //================Entrenamientos mayor de 20 años ====================
     this.entrenamientosmayor = [
       {
         img: 'https://aliiivio.com/img_entrenamientos/portadas21/entrenamientocalmatuansiedad.jpg',
@@ -199,6 +232,7 @@ export class HomePage {
         route: '/audio-playerent'
       }
     ]
+        //================Entrenmientos menor de 20 años ====================
     this.entrenaminetosmenor = [
       {
         img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientocalmatuansiedad.jpg',
@@ -296,7 +330,7 @@ export class HomePage {
       {
         titulo: 'Emociones aliviadas',
         img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientocalmatuansiedad.jpg',
-        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/calmatuansiedad/9_EMOCIONESALIVIADAS.mp3'
+        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/calmatuansiedad/6EMOCIONESALIVIADASN.mp3'
       },
       {
         titulo: 'Carita feliz',
@@ -335,7 +369,7 @@ export class HomePage {
       {
         titulo: 'La voz de tu cuerpo',
         img: 'https://aliiivio.com/img_entrenamientos/portadas21/entrenamientonecesitoayuda.jpg',
-        rutaaudio: 'https://aliiivio.com/audentrenamientos/mayor20/necesitoayuda/3_LAVOZDETUCUERPO.mp3'
+        rutaaudio: 'https://aliiivio.com/audentrenamientos/mayor20/necesitoayuda/6LAVOZDETUCUERPOM20.mp3'
       },
       {
         titulo: 'Un lugar para cada cosa',
