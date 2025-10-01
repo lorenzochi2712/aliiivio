@@ -115,8 +115,8 @@ async register() {
 
     console.log('✅ Usuario creado con UID:', uid);
     await Dialog.alert({
-    title: '¡Registro exitoso!',
-    message: 'Tu cuenta ha sido creada correctamente.'
+    title: '¡Felicidades!',
+    message: 'Registro exitoso. Ya tienes Aliiivio, inicia tu primera sesión'
   });
     // Redirige después de cerrar la alerta
     this.router.navigateByUrl('/login');
@@ -175,8 +175,8 @@ toggleConfirmPasswordVisibility() {
 }
 async mostrarAlertaNativa() {
   await Dialog.alert({
-    title: 'Registro exitoso',
-    message: 'Tu cuenta ha sido creada correctamente.'
+    title: '¡Felicidades!',
+    message: 'Registro exitoso. Ya tienes Aliiivio, inicia tu primera sesión'
   });
 }
 }

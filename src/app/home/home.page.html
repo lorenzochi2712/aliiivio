@@ -46,6 +46,10 @@
     <div class="content_div animated bounceInUp" *ngIf="edad !== null">
       <ion-grid fixed>
         <!-- Mayor de 20 años -->
+            <!-- Revisartamaño de imagen para propaganda-->
+    <div>
+      <img src="assets/portada1.jpg" alt="Publicidad"class="banner-img" />
+    </div>
         <ion-row *ngIf="edad >= 21;">
           <ion-col size="6" (click)="goToAudio(item)" *ngFor="let item of subjectsmayor">
             <div class="col_div">

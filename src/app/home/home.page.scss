@@ -60,7 +60,7 @@ ng-container{
   }
   .content_div{
     background: white;
-    height: 97vh;
+    height: 105vh;
     width: 100%;
     border-top-right-radius: 65px;
     margin-top: -75px;
@@ -156,4 +156,13 @@ ng-container{
   width: 120px;
   height: auto;
   filter: drop-shadow(0 0 10px rgba(211, 192, 152, 0.6));
+}
+.banner-img {
+  width: 95%;        /* ocupa todo el ancho */
+  height: auto;       /* mantiene proporción */
+  max-height: 160px;  /* controla la altura, ajústalo a tu gusto */
+  object-fit: cover;  /* recorta y centra la imagen si es muy alta */
+  border-radius: 12px; /* opcional: esquinas redondeadas */
+  display: block;
+  margin: 0 auto;
 }

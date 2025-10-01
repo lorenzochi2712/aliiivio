@@ -144,7 +144,7 @@ export class HomePage {
         descripcion: ''
       }
     ];
-        //================Audios independientes menor de 20 años ====================
+        //================Audios independientes mayor de 21 años ====================
     this.subjectsmayor = [
             {
         img: 'https://aliiivio.com/img_entrenamientos/portadas20/5MINUTOS1HORA.jpg',
@@ -201,7 +201,7 @@ export class HomePage {
         titulo: 'LA VOZ DE TU CUERPO',
         route: '/audio-player',
         //Hay que revisar aqui el audio en cpanel
-        rutaaudio: 'https://aliiivio.com/audios_independientes/audios_independientes_21/lavozdetucuerpo.mp3',
+        rutaaudio: 'https://aliiivio.com/audios_independientes/audios_independientes_21/3_LAVOZDETUCUERPO.mp3',
         descripcion: 'APRENDE A ESCUCHAR A TU CUERPO PARA RECUPERAR TU BIENESTAR FISICO Y EMOCIONAL'
       },
       {
@@ -330,7 +330,7 @@ export class HomePage {
       {
         titulo: 'Emociones aliviadas',
         img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientocalmatuansiedad.jpg',
-        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/calmatuansiedad/6EMOCIONESALIVIADASN.mp3'
+        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/calmatuansiedad/6_EMOCIONESALIVIADAS.mp3'
       },
       {
         titulo: 'Carita feliz',
@@ -345,7 +345,7 @@ export class HomePage {
       {
         titulo: 'Emociones curativas',
         img: 'https://aliiivio.com/img_entrenamientos/portadas20/entrenamientocalmatuansiedad.jpg',
-        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/calmatuansiedad/.mp3'
+        rutaaudio: 'https://aliiivio.com/audentrenamientos/menor20/calmatuansiedad/9_CURANDOATUPELUCHE.mp3'
       },
       {
         titulo: 'Reacomodando',
@@ -516,11 +516,11 @@ export class HomePage {
   async presentTestAlert(playlist: any[]) {
     const alert = await this.alertController.create({
       cssClass: 'custom-alert',
-      header: '¿Deseas realizar un test antes?',
-      message: 'El siguiente Test te dará una opinión sobre tu bienestar actual, si lo respondes también al final sabrás cuánto mejoraste. También puedes iniciar tu entrenamiento sin el test.',
+      header: 'Entrenamiento de diez audios.',
+      message: 'Responde el test o empieza ya',
       buttons: [
         {
-          text: 'Omitir',
+          text: 'Empiezo ya',
           role: 'cancel',
           handler: () => {
             // Ir directo al reproductor
@@ -534,7 +534,7 @@ export class HomePage {
           }
         },
         {
-          text: 'Realizar test',
+          text: 'Responder test',
           handler: () => {
             // Redirigir al test
             this.router.navigate(['/test'], {

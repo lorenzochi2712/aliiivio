@@ -84,7 +84,7 @@
       <h2>Resultado del Test</h2>
       <img [src]="gifResultado" class="resultado-gif" />
       <p class="resultado-texto">
-        <strong class="puntaje">Calificación {{puntajeTotal}}</strong>
+        <strong class="puntaje">Calificación {{ obtenerResultadoExacto(puntajeTotal) }}</strong>
         <br>
         <strong>{{ txtResultado }}</strong>
       </p>

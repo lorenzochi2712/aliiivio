@@ -103,3 +103,12 @@
 .login-link:hover {
   color: #ffffff;
 }
+.banner-img {
+  width: 100%;        /* ocupa todo el ancho */
+  height: auto;       /* mantiene proporción */
+  max-height: 160px;  /* controla la altura, ajústalo a tu gusto */
+  object-fit: cover;  /* recorta y centra la imagen si es muy alta */
+  border-radius: 8px; /* opcional: esquinas redondeadas */
+  display: block;
+  margin: 0 auto;
+}
